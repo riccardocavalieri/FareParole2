@@ -1,0 +1,49 @@
+﻿<span ng-controller="GiocaSillabeController">
+    <div class="wa-header">
+        <div class="bottone-sx"><a href="#/gioca"><img src="assets/images/bottone-sx.png" /></a></div>
+        <div class="casa"><a href="#/"><img src="assets/images/casa.png" /></a></div>
+        <div class="titolo"><img src="assets/images/titolo.png" /></div>
+    </div>
+    <div class="sottotitolo" id="sottotitolo_giocasillabe"></div>
+    <div class="wa-main">
+        <div class="wa-main-wrapper">
+            <div class="wa-giocasillabe">
+                <!-- AREA GIOCO -->
+                <div class="box-board">
+                    <div class="box-monitor" style="text-align: center;">
+                        <div class="pulsante audio" ng-click="playParola(parolaRandom);" style="display: inline-block; vertical-align: middle; margin-right: 20px;">
+                            <img class="imgToccaBottone" />
+                        </div>
+                        <div class="box-scrittura" style="display: inline; vertical-align: middle;">
+                            <div ng-repeat="lettera in parolaRandom.lettere track by $index" id="lettera-{{$index}}" class="lettera lettera-{{$index}}" style="display:inline-block;">_</div>
+                            <audio ng-repeat="sound in parolaRandom.audioParti" id="audio-{{$index}}" ng-src="{{sound}}" type="audio/mpeg">
+                                Your browser does not support this audio format.
+                            </audio>
+                        </div>
+                        <div class="box-card"><img src="{{parolaRandom.imageURL}}" /></div>
+                    </div>
+                    <audio id="audio-{{parolaRandom.completa}}" ng-src="{{parolaRandom.audioParola}}" type="audio/mpeg">
+                        Your browser does not support this audio format.
+                    </audio>
+                    <div style="text-align:center">
+                        <div id="parte-{{$index}}" class="carta media ombra premi" ng-repeat="parte in shuffledParti" ng-click="checkSillabaPressed($index);" style="background-color: white; padding-left: 10px; padding-right: 10px; margin-right: 10px; margin-left: 10px;">
+                            <div class="front testo">
+                                <span>{{parte.toUpperCase()}}</span>
+                            </div>
+                            <div class="back testo">
+                                <!--<img src="/assets/images/lettera.png" />-->
+                                <span>  </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <audio id="audioVittoria" src="assets/sounds/messaggi/applausi.mp3" type="audio/mpeg">
+        Your browser does not support this audio format.
+    </audio>
+</span>

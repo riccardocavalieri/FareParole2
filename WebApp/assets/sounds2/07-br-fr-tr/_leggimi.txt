@@ -1,0 +1,16 @@
+Carta "BR CR DR FR GR PR TR"
+
+1 - ASCOLTO:
+br, bra, ..., tru
+
+2 - SCRITTURA:
+libro, treno
+
+3 - PRELETTURA:
+frigo
+
+4 - LETTURA:
+magro, litro
+
+5 - VERIFICA:
+frutta, libro, sopra

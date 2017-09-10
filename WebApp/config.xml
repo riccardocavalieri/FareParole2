@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<widget xmlns   = "http://www.w3.org/ns/widgets"
+    xmlns:gap   = "http://phonegap.com/ns/1.0"
+    xmlns:android   = "http://schemas.android.com/apk/res/android"
+    id          = "com.riccardocavalieri.fareparole"
+    version     = "1.0.0" >
+
+  <!-- versionCode is optional and Android only -->
+
+  <name>Fare Parole</name>
+
+  <description>
+    Obiettivo della App “Fare parole” è accompagnare, sostenere e facilitare il percorso di apprendimento della letto-scrittura dell’italiano per adulti stranieri a nulla o debole scolarità nel paese di origine, analfabeti o semianalfabeti anche in lingua madre.
+  </description>
+
+  <preference name="orientation" value="landscape" />
+  <preference name="phonegap-version" value="cli-5.2.0" />
+  
+  <icon src="icon.png" />
+  
+  <!-- iOS 7.0+ -->
+  <!-- iPhone / iPod Touch  -->
+  <icon src="assets/images/icons/apple-icon-60x60.png" gap:platform="ios" width="60" height="60" />
+  <icon src="assets/images/icons/apple-icon-120x120.png" gap:platform="ios" width="120" height="120" />
+  <!-- iPad -->
+  <icon src="assets/images/icons/apple-icon-76x76.png" gap:platform="ios" width="76" height="76" />
+  <icon src="assets/images/icons/apple-icon-152x152.png" gap:platform="ios" width="152" height="152" />
+  <!-- iOS 6.1 -->
+  <!-- iPhone / iPod Touch -->
+  <icon src="assets/images/icons/apple-icon-57x57.png" gap:platform="ios" width="57" height="57" />
+  <icon src="assets/images/icons/apple-icon-114x114.png" gap:platform="ios" width="114" height="114" />
+  <!-- iPad -->
+  <icon src="assets/images/icons/apple-icon-72x72.png" gap:platform="ios" width="72" height="72" />
+  <icon src="assets/images/icons/apple-icon-144x144.png" gap:platform="ios" width="144" height="144" />
+
+  <author href="www.riccardocavalieri.com" email="riccardocavalieri@gmail.com">
+    Riccardo Cavalieri
+  </author>
+
+  <feature name="Media">
+    <param name="android-package" value="org.apache.cordova.media.AudioHandler" />
+    <param name="ios-package" value="CDVSound" />
+  </feature>
+  <feature name="Device">
+    <param name="android-package" value="org.apache.cordova.device.Device" />
+    <param name="ios-package" value="CDVDevice" />
+  </feature>
+
+  <!-- Core plugins -->
+  <gap:plugin name="org.apache.cordova.device" source="npm" />
+  <gap:plugin name="org.apache.cordova.media" source="npm" />
+
+  <content src="index.html" />
+
+  <plugins>
+    <plugin name="device" value="CDVDevice" />
+    <plugin name="media" value="CDVSound" />
+  </plugins>
+
+  <access origin="*" />
+
+</widget>

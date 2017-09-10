@@ -1,0 +1,71 @@
+﻿<span ng-controller="MinuscoloScritturaController">
+    <div class="wa-header">
+        <div class="bottone-sx"><a href="#/ascolta/{{name}}"><img src="assets/images/bottone-sx.png" /></a></div>
+        <div class="casa"><a href="#/"><img src="assets/images/casa.png" /></a></div>
+        <div class="titolo"><img src="assets/images/titolo.png" /></div>
+        <div class="bottone-dx"><a href="#/impara"><img src="assets/images/bottone-dx.png" /></a></div>
+    </div>
+    <div class="sottotitolo" id="sottotitolo_minuscoloscrittura"></div>
+    <div class="wa-main">
+        <div class="wa-main-wrapper" style="padding: 0 0 0 0;/">
+            <div class="wa-minuscoloscrittura">
+                <!-- AREA GIOCO -->
+                <div class="box-board">
+                    <div class="box-monitor" style="text-align: center;">
+                        <div class="pulsante audio" ng-click="playParola(parolaRandom);">
+                            <img class="imgToccaBottone" />
+                        </div>
+                        <div class="box-scrittura-global">
+                            <div class="box-scrittura">
+                                <div ng-repeat="lettera in parolaRandom.lettere track by $index" id="lettera-u-{{$index}}" class="lettera lettera-{{$index}}" style="display:inline-block;">{{lettera.toLowerCase()}}</div>
+                            </div>
+                            <div class="box-scrittura">
+                                <div ng-repeat="lettera in parolaRandom.lettere track by $index" id="lettera-l-{{$index}}" class="lettera lettera-{{$index}}" style="display:inline-block;">_</div>
+                            </div>
+                        </div>
+                    </div>
+                    <audio id="audio-{{parolaRandom.completa}}" ng-src="{{parolaRandom.audioParola}}" type="audio/mpeg">
+                        Your browser does not support this audio format.
+                    </audio>
+                    <div id="keyboard" class="box-keyboard">
+                        <div class="box-letters">
+                            <div class="box-letters-row">
+                                <div id="letter-a" class="carta tastiera" ng-click="letteraPremuta('a');"> <img src="assets/images/tastieraminuscolo/letter-a.png" /> </div>
+                                <div id="letter-e" class="carta tastiera" ng-click="letteraPremuta('e');"> <img src="assets/images/tastieraminuscolo/letter-e.png" /> </div>
+                                <div id="letter-i" class="carta tastiera" ng-click="letteraPremuta('i');"> <img src="assets/images/tastieraminuscolo/letter-i.png" /> </div>
+                                <div id="letter-o" class="carta tastiera" ng-click="letteraPremuta('o');"> <img src="assets/images/tastieraminuscolo/letter-o.png" /> </div>
+                                <div id="letter-u" class="carta tastiera" ng-click="letteraPremuta('u');"> <img src="assets/images/tastieraminuscolo/letter-u.png" /> </div>
+                            </div>
+                            <div class="box-letters-row">
+                                <div id="letter-b" class="carta tastiera" ng-click="letteraPremuta('b');"> <img src="assets/images/tastieraminuscolo/letter-b.png" /> </div>
+                                <div id="letter-d" class="carta tastiera" ng-click="letteraPremuta('d');"> <img src="assets/images/tastieraminuscolo/letter-d.png" /> </div>
+                                <div id="letter-f" class="carta tastiera" ng-click="letteraPremuta('f');"> <img src="assets/images/tastieraminuscolo/letter-f.png" /> </div>
+                                <div id="letter-l" class="carta tastiera" ng-click="letteraPremuta('l');"> <img src="assets/images/tastieraminuscolo/letter-l.png" /> </div>
+                                <div id="letter-m" class="carta tastiera" ng-click="letteraPremuta('m');"> <img src="assets/images/tastieraminuscolo/letter-m.png" /> </div>
+                                <div id="letter-n" class="carta tastiera" ng-click="letteraPremuta('n');"> <img src="assets/images/tastieraminuscolo/letter-n.png" /> </div>
+                                <div id="letter-p" class="carta tastiera" ng-click="letteraPremuta('p');"> <img src="assets/images/tastieraminuscolo/letter-p.png" /> </div>
+                                <div id="letter-r" class="carta tastiera" ng-click="letteraPremuta('r');"> <img src="assets/images/tastieraminuscolo/letter-r.png" /> </div>
+                            </div>
+                            <div class="box-letters-row">
+                                <div id="letter-s" class="carta tastiera" ng-click="letteraPremuta('s');"> <img src="assets/images/tastieraminuscolo/letter-s.png" /> </div>
+                                <div id="letter-t" class="carta tastiera" ng-click="letteraPremuta('t');"> <img src="assets/images/tastieraminuscolo/letter-t.png" /> </div>
+                                <div id="letter-v" class="carta tastiera" ng-click="letteraPremuta('v');"> <img src="assets/images/tastieraminuscolo/letter-v.png" /> </div>
+                                <div id="letter-z" class="carta tastiera" ng-click="letteraPremuta('z');"> <img src="assets/images/tastieraminuscolo/letter-z.png" /> </div>
+                                <div id="letter-c" class="carta tastiera" ng-click="letteraPremuta('c');"> <img src="assets/images/tastieraminuscolo/letter-c.png" /> </div>
+                                <div id="letter-g" class="carta tastiera" ng-click="letteraPremuta('g');"> <img src="assets/images/tastieraminuscolo/letter-g.png" /> </div>
+                                <div id="letter-q" class="carta tastiera" ng-click="letteraPremuta('q');"> <img src="assets/images/tastieraminuscolo/letter-q.png" /> </div>
+                                <div id="letter-h" class="carta tastiera" ng-click="letteraPremuta('h');"> <img src="assets/images/tastieraminuscolo/letter-h.png" /> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <audio id="audioVittoria" src="assets/sounds/messaggi/applausi.mp3" type="audio/mpeg">
+        Your browser does not support this audio format.
+    </audio>
+</span>

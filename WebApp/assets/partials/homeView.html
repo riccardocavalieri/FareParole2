@@ -1,0 +1,39 @@
+﻿<audio id="titolo" src="assets/sounds/messaggi/fare-parole.mp3" type="audio/mpeg">
+    Your browser does not support this audio format.
+</audio>
+
+<div class="wa-header">
+  <div class="casa"><a href="#/"><img src="assets/images/casa.png" /></a></div>
+  <div class="titolo"><img src="assets/images/titolo.png" /></div>
+  <div class="vaiaimparare"><a href="#/impara"><img src="assets/images/vaiaimparare.png" /></a></div>
+  <div class="vaiagiocare"><a href="#/gioca"><img src="assets/images/vaiagiocare.png" /></a></div>
+</div>
+<div class="wa-main">
+  <div class="wa-main-wrapper">
+    <div class="wa-home" ng-controller="HomeController">
+      <div class="box-home">
+        <div id="gioco-sillabe" class="link-a-impara"><a href="#/impara"><img src="assets/images/link-impara.png" /></a>
+            <div id="hintImpara" class="pulsante-mini-audio" ng-click="playAudioHint('#audioHintImpara');"></div>
+        </div>
+        <div id="gioco-parole" class="link-a-gioca"><a href="#/gioca"><img src="assets/images/link-gioca.png" /></a>
+            <div id="#hintGioca" class="pulsante-mini-audio" ng-click="playAudioHint('#audioHintGioca');"></div>
+        </div>
+      </div>
+    </div>
+    <div class="wa-footer"><img src="assets/images/loghi.png" width="980" /></div>
+      <div class="wa-credits"><a href="#/leggi">Scopri di più sull’App</a> | <a href="#/versioni">Versioni disponibili</a> | <a href="#/crediti">Crediti</a></div>
+  </div>
+</div>
+
+<audio id="audioHintImpara" src="assets/sounds/messaggi/impara.mp3" type="audio/mpeg">
+    Your browser does not support this audio format.
+</audio>
+
+<audio id="audioHintGioca" src="assets/sounds/messaggi/gioca.mp3" type="audio/mpeg">
+    Your browser does not support this audio format.
+</audio>
+
+<audio id="audioFareParole" src="assets/sounds/messaggi/fare-parole.mp3" type="audio/mpeg">
+    Your browser does not support this audio format.
+</audio>
+

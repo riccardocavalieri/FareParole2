@@ -1,0 +1,29 @@
+﻿<span ng-controller="AscoltaController">
+    <div class="wa-header">
+        <div class="bottone-sx"><a href="#/impara"><img src="assets/images/bottone-sx.png" /></a></div>
+        <div class="casa"><a href="#/"><img src="assets/images/casa.png" /></a></div>
+        <div class="titolo"><img src="assets/images/titolo.png" /></div>
+        <div class="bottone-dx"><a href="#/scrittura/{{name}}"><img src="assets/images/bottone-dx.png" /></a></div>
+    </div>
+    <div class="sottotitolo" id="sottotitolo_ascolto"></div>
+    <div class="wa-main">
+        <div class="wa-main-wrapper">
+            <div class="wa-ascolta">
+                <div id="sillabazione-{{parola.completa}}" class="box-sillabazione" ng-repeat="parola in parole">
+                    <div class="pulsante-mini-audio" ng-click="playParolaSillabata(parola);">
+                        <img class="imgToccaBottone" />
+                    </div>
+                    <audio id="audio-{{parola.completa}}" ng-src="{{parola.audioParola}}" type="audio/mpeg">
+                        Your browser does not support this audio format.
+                    </audio>
+                    <div ng-repeat="parte in parola.parti">
+                        <span id="parte-{{parola.completa}}-{{$index}}" class="parte parte-{{$index}}">{{parte.toUpperCase()}}</span>
+                    </div>
+                    <div id="sillaba-{{parola.completa}}" class="sillaba">{{parola.completa.toUpperCase()}}</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+        <div class="notapiepagina">La divisione delle parole è fonetica e non rispetta necessariamente la divisione sillabica</div>
+    </div>
+</span>

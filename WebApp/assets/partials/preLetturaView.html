@@ -1,0 +1,35 @@
+﻿<span ng-controller="PreLetturaController">
+    <div class="wa-header">
+        <div class="bottone-sx"><a href="#/scrittura/{{name}}"><img src="assets/images/bottone-sx.png" /></a></div>
+        <div class="casa"><a href="#/"><img src="assets/images/casa.png" /></a></div>
+        <div class="titolo"><img src="assets/images/titolo.png" /></div>
+        <div class="bottone-dx"><a href="#/lettura/{{name}}"><img src="assets/images/bottone-dx.png" /></a></div>
+    </div>
+    <div class="sottotitolo" id="sottotitolo_prelettura"></div>
+    <div class="wa-main">
+        <div class="wa-main-wrapper">
+            <div class="wa-preLettura">
+                <div class="box-board">
+                    <div class="box-monitor" style="text-align: center;">
+                        <div class="pulsante audio" ng-click="playParolaPrelettura(parolaRandom);" style="display: inline-block; vertical-align: middle; margin-right: 20px;">
+                            <img class="imgToccaBottone" />
+                        </div>
+                        <audio id="audio-{{parolaRandom.completa}}" ng-src="{{parolaRandom.audioParola}}" type="audio/mpeg">
+                            Your browser does not support this audio format.
+                        </audio>
+                        <div class="box-scrittura" style="display: inline; vertical-align: middle;">
+                            <div ng-repeat="parte in parolaRandom.parti track by $index" id="parte-prelettura-{{$index}}" class="parte parte-{{$index}}" style="display:inline-block;">{{parte}}</div>
+                        </div>
+                        <br />
+                        <br />
+                        <br />
+                        <div class="box-card">
+                            <img class="hidden" id="card_prelettura" src="{{parolaRandom.imageURL}}" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="notapiepagina">La divisione delle parole è fonetica e non rispetta necessariamente la divisione sillabica</div>
+    </div>
+ </span>

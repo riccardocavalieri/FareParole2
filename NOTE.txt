@@ -1,0 +1,5 @@
+Il file WebApp.pem serve per pubblicare aggiornamenti dell'estensione chrome FareParole2.
+Fa coppia col file WebApp.crx ed altri file dell'estensione (icone, ecc)
+
+Tutorial: creazione di un'app di Chrome (guida passo-passo):
+https://support.google.com/chrome/a/answer/2714278?hl=it

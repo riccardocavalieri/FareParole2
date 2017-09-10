@@ -1,0 +1,101 @@
+giocaconleparole-acqua.mp3
+giocaconleparole-agnello.mp3
+giocaconleparole-ago.mp3
+giocaconleparole-amica.mp3
+giocaconleparole-amici.mp3
+giocaconleparole-amore.mp3
+giocaconleparole-arancia.mp3
+giocaconleparole-bagno.mp3
+giocaconleparole-bambino.mp3
+giocaconleparole-banca.mp3
+giocaconleparole-biglietto.mp3
+giocaconleparole-biscotti.mp3
+giocaconleparole-borsa.mp3
+27/08/2017  15:45            34.952 giocaconleparole-bottiglia.mp3
+27/08/2017  15:45            26.958 giocaconleparole-braccio.mp3
+27/08/2017  15:46            24.137 giocaconleparole-caffe.mp3
+27/08/2017  15:46            26.018 giocaconleparole-calze.mp3
+27/08/2017  15:47            33.071 giocaconleparole-capelli.mp3
+27/08/2017  15:48            26.174 giocaconleparole-chiavi.mp3
+27/08/2017  15:48            31.190 giocaconleparole-chiesa.mp3
+27/08/2017  15:49            25.704 giocaconleparole-cinque.mp3
+17/08/2017  08:47            11.388 giocaconleparole-colla.mp3
+27/08/2017  15:50            38.400 giocaconleparole-coltello.mp3
+27/08/2017  15:52            26.174 giocaconleparole-denti.mp3
+27/08/2017  15:52            27.272 giocaconleparole-destra.mp3
+27/08/2017  15:53            29.309 giocaconleparole-doccia.mp3
+27/08/2017  15:53            45.923 giocaconleparole-documento.mp3
+27/08/2017  15:54            25.234 giocaconleparole-due.mp3
+27/08/2017  15:54            44.983 giocaconleparole-elefante.mp3
+27/08/2017  15:54            35.265 giocaconleparole-entrata.mp3
+27/08/2017  15:55            31.347 giocaconleparole-esame.mp3
+27/08/2017  15:56            37.930 giocaconleparole-famiglia.mp3
+27/08/2017  15:57            31.503 giocaconleparole-figlio.mp3
+27/08/2017  15:57            29.466 giocaconleparole-fiore.mp3
+27/08/2017  15:58            31.347 giocaconleparole-frutta.mp3
+27/08/2017  15:58            26.018 giocaconleparole-gamba.mp3
+27/08/2017  15:59            27.742 giocaconleparole-gatto.mp3
+27/08/2017  15:59            28.525 giocaconleparole-giacca.mp3
+27/08/2017  16:00            38.556 giocaconleparole-giornale.mp3
+27/08/2017  16:01            28.525 giocaconleparole-gomma.mp3
+27/08/2017  16:01            30.563 giocaconleparole-guanti.mp3
+27/08/2017  16:02            48.117 giocaconleparole-indirizzo.mp3
+27/08/2017  16:02            48.117 giocaconleparole-insalata.mp3
+27/08/2017  16:03            23.980 giocaconleparole-io.mp3
+27/08/2017  16:36            47.868 giocaconleparole-lampadina.mp3
+27/08/2017  16:04            30.406 giocaconleparole-latte.mp3
+27/08/2017  16:05            38.400 giocaconleparole-lavagna.mp3
+27/08/2017  16:05            29.152 giocaconleparole-libro.mp3
+27/08/2017  16:06            31.033 giocaconleparole-litro.mp3
+27/08/2017  16:06            26.958 giocaconleparole-loro.mp3
+27/08/2017  16:07            37.930 giocaconleparole-macchina.mp3
+27/08/2017  16:07            27.742 giocaconleparole-maglia.mp3
+27/08/2017  16:08            29.623 giocaconleparole-magro.mp3
+27/08/2017  16:08            28.525 giocaconleparole-mamma.mp3
+27/08/2017  16:09            40.908 giocaconleparole-mangiare.mp3
+27/08/2017  16:09            39.183 giocaconleparole-marrone.mp3
+27/08/2017  16:10            38.400 giocaconleparole-mercato.mp3
+27/08/2017  16:11            28.525 giocaconleparole-mese.mp3
+27/08/2017  16:12            28.055 giocaconleparole-moglie.mp3
+27/08/2017  16:12            40.124 giocaconleparole-montagna.mp3
+27/08/2017  16:14            24.294 giocaconleparole-olio.mp3
+27/08/2017  16:14            23.980 giocaconleparole-ora.mp3
+27/08/2017  16:16            47.177 giocaconleparole-ospedale.mp3
+27/08/2017  16:16            25.391 giocaconleparole-otto.mp3
+27/08/2017  16:17            30.563 giocaconleparole-pesce.mp3
+27/08/2017  16:18            29.779 giocaconleparole-piede.mp3
+27/08/2017  16:18            25.548 giocaconleparole-pizza.mp3
+27/08/2017  16:19            49.371 giocaconleparole-polizia.mp3
+27/08/2017  16:19            23.667 giocaconleparole-pollo.mp3
+27/08/2017  16:20            25.077 giocaconleparole-porta.mp3
+27/08/2017  16:20            27.585 giocaconleparole-posta.mp3
+27/08/2017  16:20            38.870 giocaconleparole-quaderno.mp3
+27/08/2017  16:21            55.954 giocaconleparole-ristorante.mp3
+27/08/2017  16:22            30.876 giocaconleparole-rosso.mp3
+27/08/2017  16:23            30.563 giocaconleparole-scala.mp3
+27/08/2017  16:23            32.757 giocaconleparole-scarpe.mp3
+27/08/2017  16:24            42.632 giocaconleparole-scendere.mp3
+27/08/2017  16:24            42.788 giocaconleparole-schiena.mp3
+27/08/2017  16:25            42.788 giocaconleparole-scrivere.mp3
+27/08/2017  16:25            39.340 giocaconleparole-scuola.mp3
+27/08/2017  16:26            31.033 giocaconleparole-sedia.mp3
+27/08/2017  16:26            29.309 giocaconleparole-sei.mp3
+27/08/2017  16:27            48.117 giocaconleparole-sigaretta.mp3
+27/08/2017  16:27            38.713 giocaconleparole-signora.mp3
+27/08/2017  16:27            39.967 giocaconleparole-sinistra.mp3
+27/08/2017  16:28            30.563 giocaconleparole-soldi.mp3
+27/08/2017  16:28            29.309 giocaconleparole-sopra.mp3
+27/08/2017  16:29            42.788 giocaconleparole-spaghetti.mp3
+27/08/2017  16:29            41.848 giocaconleparole-stazione.mp3
+27/08/2017  16:30            32.444 giocaconleparole-strada.mp3
+27/08/2017  16:30            47.020 giocaconleparole-studente.mp3
+27/08/2017  16:31            28.839 giocaconleparole-treno.mp3
+27/08/2017  16:32            22.726 giocaconleparole-uno.mp3
+27/08/2017  16:32            27.428 giocaconleparole-uomo.mp3
+27/08/2017  16:32            29.779 giocaconleparole-uovo.mp3
+27/08/2017  16:33            35.892 giocaconleparole-uscita.mp3
+27/08/2017  16:33            37.616 giocaconleparole-vedere.mp3
+27/08/2017  16:34            28.996 giocaconleparole-venti.mp3
+27/08/2017  16:35            37.930 giocaconleparole-zucchero.mp3
+27/08/2017  16:35            28.212 giocaconleparole-zuppa.mp3
+

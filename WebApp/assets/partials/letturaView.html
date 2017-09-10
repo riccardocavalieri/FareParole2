@@ -1,0 +1,38 @@
+﻿<span ng-controller="LetturaController">
+    <div class="wa-header">
+        <div class="bottone-sx"><a href="#/preLettura/{{name}}"><img src="assets/images/bottone-sx.png" /></a></div>
+        <div class="casa"><a href="#/"><img src="assets/images/casa.png" /></a></div>
+        <div class="titolo"><img src="assets/images/titolo.png" /></div>
+        <div class="bottone-dx"><a href="#/verifica/{{name}}"><img src="assets/images/bottone-dx.png" /></a></div>
+    </div>
+    <div class="sottotitolo" id="sottotitolo_lettura"></div>
+    <div class="wa-main">
+        <div class="wa-main-wrapper">
+            <div class="wa-lettura">
+                <div class="box-board">
+                    <div class="box-monitor" style="text-align: center;">
+                        <div class="pulsante leggi" ng-click="playParolaLettura(parolaRandom);" style="display: inline-block; vertical-align: middle; margin-right: 20px;">
+                            <img class="imgToccaBottone" />
+                        </div>
+                        <audio id="audio-{{parolaRandom.completa}}" ng-src="{{parolaRandom.audioLungo}}" type="audio/mpeg">
+                            Your browser does not support this audio format.
+                        </audio>
+                        <div class="box-scrittura" style="display: inline; vertical-align: middle;">
+                            <div ng-repeat="parte in parolaRandom.parti track by $index" id="parte-lettura-{{$index}}" class="parte parte-{{$index}}" style="display:inline-block;">{{parte}}</div>
+                        </div>
+                        <div class="pulsante audio" ng-click="playAudioParola(parolaRandom);" style="display: inline-block; vertical-align: middle; margin-left: 20px;">
+                            <img />
+                        </div>
+                        <br />
+                        <br />
+                        <br />
+                        <div class="box-card">
+                            <img class="hidden" id="card_lettura" src="{{parolaRandom.imageURL}}" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="notapiepagina">La divisione delle parole è fonetica e non rispetta necessariamente la divisione sillabica</div>
+    </div>
+ </span>

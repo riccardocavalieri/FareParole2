@@ -1,0 +1,5 @@
+Qui si usano 20 Parole
+All'inizio del gioco parola normale es: monete.mp3
+A gioco finito parola lungo-normale es: monete-lungo-normale.mp3
+
+arancia, bambino, documento, entrata, famiglia, giornale, insalata, italia, lampadina, lavoro, mangiare, monete, montagna, ospedale, polizia, quaderno, ristorante, scendere, stazione, uscita,

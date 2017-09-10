@@ -1,0 +1,81 @@
+﻿<!doctype html>
+<html ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <title>FARE PAROLE V2</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <script src="assets/js/jquery-2.1.4.min.js"></script>
+    <script src="assets/js/angular.min.js"></script>
+    <script src="assets/js/angular-animate.min.js"></script>
+    <script src="assets/js/angular-route.min.js"></script>
+    <script src="assets/js/controllers.js"></script>
+    <script src="assets/js/index.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/common.js"></script>
+    <script src="assets/js/flip.js"></script>
+</head>
+
+<body>
+    <div ng-view></div>
+
+    <audio id="audioBene">
+        <source src="assets/sounds/messaggi/bene.mp3" type="audio/mpeg" />
+        Your browser does not support this audio format.
+    </audio>
+
+    <audio id="audioNo">
+        <source src="assets/sounds/messaggi/no.mp3" type="audio/mpeg" />
+        Your browser does not support this audio format.
+    </audio>
+
+    <audio id="audioLeggi">
+        <source src="assets/sounds/messaggi/leggi.mp3" type="audio/mpeg" />
+        Your browser does not support this audio format.
+    </audio>
+
+    <audio id="audioTocca">
+        <source src="assets/sounds/messaggi/tocca-2.mp3" type="audio/mpeg" />
+        Your browser does not support this audio format.
+    </audio>
+
+    <audio id="audioToccaIlBottone">
+        <source src="assets/sounds/messaggi/tocca-il-bottone.mp3" type="audio/mpeg" />
+        Your browser does not support this audio format.
+    </audio>
+
+    <audio id="audioToccaUnaLettera">
+        <source src="assets/sounds/messaggi/tocca-una-lettera.mp3" type="audio/mpeg" />
+        Your browser does not support this audio format.
+    </audio>
+    
+    <audio id="audioToccaLaLettera">
+        <source src="assets/sounds/messaggi/tocca-la-lettera.mp3" type="audio/mpeg" />
+        Your browser does not support this audio format.
+    </audio>
+
+    <audio id="audioToccaLeLettere">
+        <source src="assets/sounds/messaggi/tocca-le-lettere.mp3" type="audio/mpeg" />
+        Your browser does not support this audio format.
+    </audio>
+    
+    <audio id="audioToccaLaSillaba" preload="auto">
+        <source src="assets/sounds/messaggi/tocca-la-Sillaba.mp3" type="audio/mpeg" />
+        Your browser does not support this audio format.
+    </audio>
+
+    <audio id="audioToccaLeSillabe">
+        <source src="assets/sounds/messaggi/tocca-le-Sillabe.mp3" type="audio/mpeg" />
+        Your browser does not support this audio format.
+    </audio>
+
+    <audio id="audioToccaUnaCarta">
+        <source src="assets/sounds/messaggi/tocca-una-carta.mp3" type="audio/mpeg" />
+        Your browser does not support this audio format.
+    </audio>
+
+    <script type="text/javascript">
+        app.initialize();
+    </script>
+
+</body>
+</html>

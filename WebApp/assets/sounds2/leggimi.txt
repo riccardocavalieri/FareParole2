@@ -1,0 +1,3 @@
+Questa cartella, in FareParole2, prende il posto della cartella "sounds". Dopo avere rinominato "sounds" > "sounds1", sarà sufficiente rinominarla togliendo il 2. Ho infatti già copiato anche qui tutti i file sonori utili anche nella versione 2.
+
+Al momento ho lasciato Sounds normale giusto perchè così va perfettamente la versione 1.

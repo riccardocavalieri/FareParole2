@@ -1,0 +1,59 @@
+Carta "CONSONANTE INTERMEDIA"
+(è un po' diversa dalle altre, è come se fosse 4 carte, ma c'è 1 sola verifica finale)
+
+"R"
+1 - ASCOLTO:
+porta, borsa
+
+2 - SCRITTURA:
+porta, borsa
+
+3 - PRELETTURA:
+mercato
+
+4 - LETTURA:
+forno
+
+"L"
+1 - ASCOLTO:
+calze, soldi
+
+2 - SCRITTURA:
+calze, soldi
+
+3 - PRELETTURA:
+coltello
+
+4 - LETTURA:
+balcone
+
+"M"
+1 - ASCOLTO:
+bambino, gamba
+
+2 - SCRITTURA:
+bambino, gamba
+
+3 - PRELETTURA:
+lampadina
+
+4 - LETTURA:
+bambola
+
+"N"
+1 - ASCOLTO:
+venti, banca
+
+2 - SCRITTURA:
+venti, banca
+
+3 - PRELETTURA:
+documento
+
+4 - LETTURA:
+denti
+
+--
+
+5 - VERIFICA:
+calze, mercato, documento, lampadina
