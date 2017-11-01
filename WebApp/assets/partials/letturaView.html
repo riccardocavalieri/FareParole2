@@ -6,6 +6,9 @@
         <div class="bottone-dx"><a href="#/verifica/{{name}}"><img src="assets/images/bottone-dx.png" /></a></div>
     </div>
     <div class="sottotitolo" id="sottotitolo_lettura"></div>
+    <br />
+    <div class="notapiepagina">La divisione delle parole è fonetica e non rispetta necessariamente la divisione sillabica</div>
+    <br />
     <div class="wa-main">
         <div class="wa-main-wrapper">
             <div class="wa-lettura">
@@ -21,7 +24,7 @@
                             <div ng-repeat="parte in parolaRandom.parti track by $index" id="parte-lettura-{{$index}}" class="parte parte-{{$index}}" style="display:inline-block;">{{parte}}</div>
                         </div>
                         <div class="pulsante audio" ng-click="playAudioParola(parolaRandom);" style="display: inline-block; vertical-align: middle; margin-left: 20px;">
-                            <img />
+                            <img class="imgToccaBottone2" />
                         </div>
                         <br />
                         <br />
@@ -33,6 +36,5 @@
                 </div>
             </div>
         </div>
-        <div class="notapiepagina">La divisione delle parole è fonetica e non rispetta necessariamente la divisione sillabica</div>
     </div>
  </span>

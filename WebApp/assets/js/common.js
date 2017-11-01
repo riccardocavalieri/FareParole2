@@ -105,12 +105,27 @@ function playAudioToccaLeSillabe() {
 }
 
 function playAudioToccaLaParola() {
-    // TODO: mettere l'elemento audio "ToccaLaParola"
-    getAudioElementAndPlay('#audioToccaLeSillabe');
+    getAudioElementAndPlay('#audioToccaLaParola');
 }
 
 function playAudioToccaUnaCarta() {
     getAudioElementAndPlay('#audioToccaUnaCarta');
+}
+
+function playAudioBottoneAscolta() {
+    getAudioElementAndPlay('#audioToccaBottoneAscolta');
+}
+
+function playAudioBottoneLeggi() {
+    getAudioElementAndPlay('#audioToccaBottoneLeggi');
+}
+
+function playAudioBottoneScrivi() {
+    getAudioElementAndPlay('#audioToccaBottoneScrivi');
+}
+
+function playAudioToccaLaCarta() {
+    getAudioElementAndPlay('#audioToccaLaCarta');
 }
 
 function getAudioElementAndPlay(audioElementId) {
@@ -251,6 +266,22 @@ function hideToccaCarte() {
     $(".imgToccaCarte").hide();
 }
 
+function showToccaIlBottone2() {
+    $(".imgToccaBottone2").show();
+}
+
+function hideToccaIlBottone2() {
+    $(".imgToccaBottone2").hide();
+}
+
+function hintToccaIlBottone2() {
+    if (!soundMuted) {
+        playAudioBottoneAscolta();
+    }
+    setTimeout(showToccaIlBottone2, 200);
+    setTimeout(hideToccaIlBottone2, 3500);
+}
+
 function hintToccaIlBottone() {
     if (!soundMuted) {
         playAudioToccaIlBottone();
@@ -310,6 +341,38 @@ function hintToccaLaParola() {
 function hintToccaUnaCarta() {
     if (!soundMuted) {
         playAudioToccaUnaCarta();
+    }
+    setTimeout(showToccaCarte, 200);
+    setTimeout(hideToccaCarte, 5000);
+}
+
+function hintToccaBottoneAscolta() {
+    if (!soundMuted) {
+        playAudioBottoneAscolta();
+    }
+    setTimeout(showToccaIlBottone, 200);
+    setTimeout(hideToccaIlBottone, 3500);
+}
+
+function hintToccaBottoneLeggi() {
+    if (!soundMuted) {
+        playAudioBottoneLeggi();
+    }
+    setTimeout(showToccaIlBottone, 200);
+    setTimeout(hideToccaIlBottone, 3500);
+}
+
+function hintToccaBottoneScrivi() {
+    if (!soundMuted) {
+        playAudioBottoneScrivi();
+    }
+    setTimeout(showToccaIlBottone, 200);
+    setTimeout(hideToccaIlBottone, 3500);
+}
+
+function hintToccaLaCarta() {
+    if (!soundMuted) {
+        playAudioToccaLaCarta();
     }
     setTimeout(showToccaCarte, 200);
     setTimeout(hideToccaCarte, 5000);

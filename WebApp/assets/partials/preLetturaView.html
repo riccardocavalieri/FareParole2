@@ -6,6 +6,9 @@
         <div class="bottone-dx"><a href="#/lettura/{{name}}"><img src="assets/images/bottone-dx.png" /></a></div>
     </div>
     <div class="sottotitolo" id="sottotitolo_prelettura"></div>
+    <br />
+    <div class="notapiepagina">La divisione delle parole è fonetica e non rispetta necessariamente la divisione sillabica</div>
+    <br />
     <div class="wa-main">
         <div class="wa-main-wrapper">
             <div class="wa-preLettura">
@@ -14,7 +17,10 @@
                         <div class="pulsante audio" ng-click="playParolaPrelettura(parolaRandom);" style="display: inline-block; vertical-align: middle; margin-right: 20px;">
                             <img class="imgToccaBottone" />
                         </div>
-                        <audio id="audio-{{parolaRandom.completa}}" ng-src="{{parolaRandom.audioParola}}" type="audio/mpeg">
+                        <audio id="audio-{{parolaRandom.completa}}-scandito" ng-src="{{parolaRandom.audioScandito}}" type="audio/mpeg">
+                            Your browser does not support this audio format.
+                        </audio>
+                        <audio id="audio-{{parolaRandom.completa}}-completa" ng-src="{{parolaRandom.audioParola}}" type="audio/mpeg">
                             Your browser does not support this audio format.
                         </audio>
                         <div class="box-scrittura" style="display: inline; vertical-align: middle;">
@@ -30,6 +36,5 @@
                 </div>
             </div>
         </div>
-        <div class="notapiepagina">La divisione delle parole è fonetica e non rispetta necessariamente la divisione sillabica</div>
     </div>
  </span>

@@ -32,49 +32,6 @@ myAppControllers.controller('ImparaController', [
 		$scope.changeLocation = function(path) {
 			$location.path(path);
 		}
-
-		$scope.randomDestination = getRandomDestination();
-
-		function getRandomDestination()
-		{
-		    var destination;
-
-		    var randomNumber = Math.floor((Math.random() * 10) + 1);
-		    switch (randomNumber) {
-		        case 1:
-		            return "#/ascolta/01";
-		            break;
-		        case 2:
-		            return "#/ascolta/02";
-		            break;
-		        case 3:
-		            return "#/ascolta/03";
-		            break;
-		        case 4:
-		            return "#/ascolta/04";
-		            break;
-		        case 5:
-		            return "#/ascolta/05";
-		            break;
-		        case 6:
-		            return "#/ascolta/06";
-		            break;
-		        case 7:
-		            return "#/ascolta/07";
-		            break;
-		        case 8:
-		            return "#/ascolta/08";
-		            break;
-		        case 9:
-		            return "#/ascolta/09";
-		            break;
-		        case 10:
-		            return "#/minuscoloPreScrittura";
-		            break;
-		        default:
-		            break;
-		    }
-		}
     }
 ]);
 
@@ -82,28 +39,33 @@ myAppControllers.controller('AscoltaController', [
     '$scope', '$routeParams',
     function ($scope, $routeParams) {
 
-        hintToccaIlBottone();
+        hintToccaBottoneAscolta();
 
         $scope.name = $routeParams.name;
 
+        $scope.showPlayButton = false;
         function setSottotitolo()
         {
             var sottotitolo = $("#sottotitolo_ascolto")[0];
             var strSottotitolo = $STR_ASCOLTO;
             if ($routeParams.name === '01') {
                 strSottotitolo = strSottotitolo + ' - ' + $STR_01;
+                $scope.showPlayButton = true;
             }
             if ($routeParams.name === '02') {
                 strSottotitolo = strSottotitolo + ' - ' + $STR_02;
+                $scope.showPlayButton = true;
             }
             if ($routeParams.name === '03') {
                 strSottotitolo = strSottotitolo + ' - ' + $STR_03;
+                $scope.showPlayButton = true;
             }
             if ($routeParams.name === '04') {
                 strSottotitolo = strSottotitolo + ' - ' + $STR_04;
             }
             if ($routeParams.name === '05') {
                 strSottotitolo = strSottotitolo + ' - ' + $STR_05;
+                $scope.showPlayButton = true;
             }
             if ($routeParams.name === '06') {
                 strSottotitolo = strSottotitolo + ' - ' + $STR_06;
@@ -147,6 +109,15 @@ myAppControllers.controller('AscoltaController', [
             evidenziaParti();
         }
 
+        $scope.playParola = function (parola)
+        {
+            $scope.currentParola = parola;
+
+            var audioPlayer = getAudioPlayer('#audio-' + $scope.currentParola.completa + '-2');
+            if (audioPlayer)
+                playAudio(audioPlayer);
+        }
+
         var delayForAscolta = 2000;
         if ($routeParams.name === '01') {
             delayForAscolta = 2000;
@@ -164,19 +135,19 @@ myAppControllers.controller('AscoltaController', [
             delayForAscolta = 2000;
         }
         if ($routeParams.name === '06') {
-            delayForAscolta = 2000;
+            delayForAscolta = 2500;
         }
         if ($routeParams.name === '07') {
-            delayForAscolta = 2000;
+            delayForAscolta = 2250;
         }
         if ($routeParams.name === '08') {
-            delayForAscolta = 2000;
+            delayForAscolta = 2500;
         }
         if ($routeParams.name === '09') {
-            delayForAscolta = 2000;
+            delayForAscolta = 2500;
         }
         if ($routeParams.name === '10') {
-            delayForAscolta = 2000;
+            delayForAscolta = 2500;
         }
 
         function evidenziaParti()
@@ -247,7 +218,7 @@ myAppControllers.controller('ScritturaController', [
         }
         setSottotitolo();
 
-        hintToccaIlBottone();
+        hintToccaBottoneScrivi();
 
         $scope.name = $routeParams.name;
         $scope.parole = getParoleScritturaPerLivello($routeParams.name);
@@ -262,6 +233,9 @@ myAppControllers.controller('ScritturaController', [
 
         $scope.playParola = function (parola)
         {
+            if (ignoreTouches)
+                return;
+
             if (currentParte < $scope.parolaRandom.parti.length)
             {
                 var audioElementId = "#sound-scrittura-" + currentParte;
@@ -292,15 +266,22 @@ myAppControllers.controller('ScritturaController', [
                 for (var i=0; i<$scope.parolaRandom.completa.length; i++)
                 {
                     var letterDiv = $("#lettera-" + i);
-                    letterDiv[0].innerHTML = '_';
-                    letterDiv[0].innerText = '_';
+                    if (letterDiv.length > 0)
+                    {
+                        letterDiv[0].innerHTML = '_';
+                        letterDiv[0].innerText = '_';
+                    }
                 }
             }
         }
 
+        var ignoreTouches = false;
         $scope.letteraPremuta = function (lettera)
         {
             if (gameOver)
+                return;
+
+            if (ignoreTouches)
                 return;
 
             if (lettera.toUpperCase() === $scope.parolaRandom.lettere[currentLetter]) {
@@ -311,7 +292,10 @@ myAppControllers.controller('ScritturaController', [
                 errori++;
 
                 if (errori >= 2)
-                    completeCurrentSillaba();
+                {
+                    ignoreTouches = true;
+                    setTimeout(function () { completeCurrentSillaba(); }, 2000);
+                }
             }
         }
 
@@ -325,12 +309,20 @@ myAppControllers.controller('ScritturaController', [
             // Check parola completa
             if (currentLetter >= $scope.parolaRandom.lettere.length)
             {
+                ignoreTouches = true;
+
                 if (errori < 2)
                 {
                     var audioPlayer = getAudioPlayer('#audioVittoria');
                     playAudio(audioPlayer);
                 }
-                setTimeout(function () { hintToccaIlBottone(); }, 3000);
+
+                setTimeout(function () {
+                    ignoreTouches = false;
+                    hintToccaBottoneScrivi();
+                    $scope.playParola();
+                }, 3000);
+
                 gameOver = true;
             }
 
@@ -351,7 +343,10 @@ myAppControllers.controller('ScritturaController', [
                     var audioElementId = "#sound-scrittura-" + currentParte;
                     var audioPlayer = getAudioPlayer(audioElementId);
                     playAudio(audioPlayer);
-                }, 500);
+                }, 1500);
+
+                if (!gameOver)
+                    playAudioBene();
             }
         }
 
@@ -376,8 +371,7 @@ myAppControllers.controller('ScritturaController', [
             }
             currentLetter = endOfLastSillaba;
             currentLetterOfSillaba = 0;
-            playAudioNo();
-
+            
             var parteLength = $scope.parolaRandom.parti[currentParte].length;
             for (var u = 0; u < parteLength; u++)
             {
@@ -385,6 +379,8 @@ myAppControllers.controller('ScritturaController', [
             }
 
             errori = 0;
+
+            ignoreTouches = false;
         }
     }
 ]);
@@ -433,7 +429,7 @@ myAppControllers.controller('PreLetturaController', [
         }
         setSottotitolo();
 
-        hintToccaIlBottone();
+        hintToccaBottoneAscolta();
 
         $scope.name = $routeParams.name;
 
@@ -466,7 +462,7 @@ myAppControllers.controller('PreLetturaController', [
                 setTimeout(function () { $scope.playParolaPrelettura(parola); }, 500);
             }
 
-            var audioPlayer = getAudioPlayer('#audio-' + $scope.parolaRandom.completa);
+            var audioPlayer = getAudioPlayer('#audio-' + $scope.parolaRandom.completa + '-scandito');
             playAudio(audioPlayer);
 
             $('.parte-evidenziata').removeClass('parte-evidenziata');
@@ -475,36 +471,36 @@ myAppControllers.controller('PreLetturaController', [
 
         var currentParte = 0;
 
-        var delayForPrelettura = 2000;
+        var delayForPrelettura = 1500;
         if ($routeParams.name === '01') {
-            delayForPrelettura = 2000;
+            delayForPrelettura = 1500;
         }
         if ($routeParams.name === '02') {
-            delayForPrelettura = 2000;
+            delayForPrelettura = 1500;
         }
         if ($routeParams.name === '03') {
-            delayForPrelettura = 2000;
+            delayForPrelettura = 1500;
         }
         if ($routeParams.name === '04') {
-            delayForPrelettura = 2000;
+            delayForPrelettura = 1500;
         }
         if ($routeParams.name === '05') {
-            delayForPrelettura = 2000;
+            delayForPrelettura = 1500;
         }
         if ($routeParams.name === '06') {
-            delayForPrelettura = 2000;
+            delayForPrelettura = 1500;
         }
         if ($routeParams.name === '07') {
-            delayForPrelettura = 2000;
+            delayForPrelettura = 1500;
         }
         if ($routeParams.name === '08') {
-            delayForPrelettura = 2000;
+            delayForPrelettura = 1500;
         }
         if ($routeParams.name === '09') {
-            delayForPrelettura = 2000;
+            delayForPrelettura = 1500;
         }
         if ($routeParams.name === '10') {
-            delayForPrelettura = 2000;
+            delayForPrelettura = 1500;
         }
 
         function evidenziaPartiPrelettura()
@@ -512,10 +508,20 @@ myAppControllers.controller('PreLetturaController', [
             // Interrompo le chiamate ricorsive
             if (currentParte >= $scope.parolaRandom.parti.length)
             {
+                // Reset and set flags
                 audioRunning = false;
                 currentParte = 0;
-                $('#card_prelettura').removeClass('hidden');
                 gameOver = true;
+
+                // Remove green highlight
+                $('#card_prelettura').removeClass('hidden');
+
+                // Play parola completa alla comparsa dell'immagine
+                var audioPlayer = getAudioPlayer('#audio-' + $scope.parolaRandom.completa + '-completa');
+                if (audioPlayer)
+                    playAudio(audioPlayer);
+
+                // Stop the recursive calls
                 return;
             }
 
@@ -573,7 +579,7 @@ myAppControllers.controller('LetturaController', [
         }
         setSottotitolo();
 
-        hintToccaIlBottone();
+        hintToccaBottoneLeggi();
 
         $scope.name = $routeParams.name;
 
@@ -628,6 +634,7 @@ myAppControllers.controller('LetturaController', [
             // Interrompo le chiamate ricorsive
             if (currentParte >= $scope.parolaRandom.parti.length) {
                 canPlayAudio = true;
+                hintToccaIlBottone2();
                 return;
             }
 
@@ -685,7 +692,7 @@ myAppControllers.controller('VerificaController', [
         }
         setSottotitolo();
 
-        hintToccaIlBottone();
+        hintToccaBottoneAscolta();
 
         $scope.name = $routeParams.name;
 
@@ -742,6 +749,8 @@ myAppControllers.controller('VerificaController', [
         function rightAnswer(element) {
             element.addClass("bg-verde");
             playAudioVittoria();
+            // Rimosso, andava in sovrapposizione all'hint successivo
+            //setTimeout(function () { hintToccaBottoneAscolta(); }, 3000);
         }
 
         var errorsCount = 0;
@@ -794,7 +803,7 @@ myAppControllers.controller('MinuscoloPreScritturaController', [
         }
         setSottotitolo();
 
-        hintToccaIlBottone();
+        hintToccaBottoneLeggi();
 
         $scope.parole = $paroleMinuscolo;
         $scope.parolaRandom = getRandomElemento($scope.parole);
@@ -832,6 +841,7 @@ myAppControllers.controller('MinuscoloPreScritturaController', [
                 animationRunning = false;
                 currentParte = 0;
                 listenComplete = true;
+                hintToccaIlBottone2();
                 return;
             }
 
@@ -903,46 +913,64 @@ myAppControllers.controller('MinuscoloScritturaController', [
         var gameOver = false;
         var errori = 0;
 
+        var ignoreTouches = false;
         $scope.letteraPremuta = function (lettera)
         {
             if (gameOver)
                 return;
 
+            if (ignoreTouches)
+                return;
+
             if (lettera.toUpperCase() === $scope.parolaRandom.lettere[currentLetter])
             {
-                var letterDiv = $("#lettera-l-" + currentLetter);
-                letterDiv[0].innerHTML = $scope.parolaRandom.lettere[currentLetter].toUpperCase();
-                letterDiv[0].innerText = $scope.parolaRandom.lettere[currentLetter].toUpperCase();
-
-                currentLetter++;
-                if (currentLetter >= $scope.parolaRandom.lettere.length)
-                {
-                    gameOver = true;
-                    playAudioVittoria();
-                    angular.element('.lettera_minuscoloscrittura_evidenziata').removeClass("lettera_minuscoloscrittura_evidenziata");
-                    return;
-                }
-                else
-                {
-                    angular.element('.lettera_minuscoloscrittura_evidenziata').removeClass("lettera_minuscoloscrittura_evidenziata");
-                    angular.element('#lettera-u-' + currentLetter).addClass("lettera_minuscoloscrittura_evidenziata");
-                }
-
-                playAudioBene();
-                errori = 0;
+                letteraCorretta();
             }
             else
             {
-                if (errori < 2)
-                {
-                    playAudioNo();
-                    errori++;
-                }
-                else
-                {
-                    errori = 0;
-                    $scope.letteraPremuta($scope.parolaRandom.lettere[currentLetter])
-                }
+                letteraErrata();
+            }
+        };
+
+        function letteraCorretta()
+        {
+            var letterDiv = $("#lettera-l-" + currentLetter);
+            letterDiv[0].innerHTML = $scope.parolaRandom.lettere[currentLetter].toUpperCase();
+            letterDiv[0].innerText = $scope.parolaRandom.lettere[currentLetter].toUpperCase();
+
+            currentLetter++;
+            if (currentLetter >= $scope.parolaRandom.lettere.length)
+            {
+                gameOver = true;
+                playAudioVittoria();
+                angular.element('.lettera_minuscoloscrittura_evidenziata').removeClass("lettera_minuscoloscrittura_evidenziata");
+                return;
+            }
+            else
+            {
+                angular.element('.lettera_minuscoloscrittura_evidenziata').removeClass("lettera_minuscoloscrittura_evidenziata");
+                angular.element('#lettera-u-' + currentLetter).addClass("lettera_minuscoloscrittura_evidenziata");
+            }
+
+            playAudioBene();
+            errori = 0;
+
+            ignoreTouches = false;
+        }
+
+        function letteraErrata()
+        {
+            if (errori < 1)
+            {
+                playAudioNo();
+                errori++;
+                ignoreTouches = false;
+            }
+            else
+            {
+                playAudioNo();
+                ignoreTouches = true;
+                setTimeout(function () { letteraCorretta(); }, 2000);
             }
         }
     }
@@ -976,8 +1004,8 @@ myAppControllers.controller('GiocaParoleController', [
 
         $scope.name = $routeParams.name;
 
-        $scope.parole = $paroleGiocaParole;
-        $scope.parolaRandom = getRandomElemento($scope.parole);
+        var paroleRandom = shuffle(JSON.parse(JSON.stringify($paroleGiocaParole)));
+        $scope.parolaRandom = paroleRandom.pop(0);
         var currentLetter = 0;
         var gameOver = false;
         var errori = 0;
@@ -987,7 +1015,10 @@ myAppControllers.controller('GiocaParoleController', [
             // Get nuova parola
             if (gameOver)
             {
-                $scope.parolaRandom = getRandomElemento($scope.parole);
+                if (paroleRandom.length == 0) {
+                    paroleRandom = shuffle(JSON.parse(JSON.stringify($paroleGiocaParole)));
+                }
+                $scope.parolaRandom = paroleRandom.pop(0);
                 $scope.$apply();
                 for (var i = 0; i < $scope.parolaRandom.lettere.length; i++) {
                     var letterDiv = $("#lettera-" + i);
@@ -1003,46 +1034,61 @@ myAppControllers.controller('GiocaParoleController', [
             playAudio(audioPlayer);
         }
 
+        var ignoreTouches = false;
         $scope.letteraPremuta = function (lettera)
         {
             if (gameOver)
                 return;
 
+            if (ignoreTouches)
+                return;
+
             if (lettera.toUpperCase() === $scope.parolaRandom.lettere[currentLetter]) {
-                var letterDiv = $("#lettera-" + currentLetter);
-                letterDiv[0].innerHTML = $scope.parolaRandom.lettere[currentLetter];
-                letterDiv[0].innerText = $scope.parolaRandom.lettere[currentLetter];
-
-                currentLetter++;
-                if (currentLetter >= $scope.parolaRandom.lettere.length)
-                {
-                    gameOver = true;
-                    playAudioVittoria();
-                    return;
-                }
-
-                errori = 0;
-                playAudioBene();
+                letteraCorretta();
             }
-            else
-            {
+            else {
+                letteraErrata();
+            }
+        }
+
+        function letteraCorretta()
+        {
+            var letterDiv = $("#lettera-" + currentLetter);
+            letterDiv[0].innerHTML = $scope.parolaRandom.lettere[currentLetter];
+            letterDiv[0].innerText = $scope.parolaRandom.lettere[currentLetter];
+
+            currentLetter++;
+            if (currentLetter >= $scope.parolaRandom.lettere.length) {
+                gameOver = true;
+                if (errori <= 1)
+                    playAudioVittoria();
+
+                setTimeout(function () {
+                    ignoreTouches = false;
+                    hintToccaIlBottone();
+                    $scope.playParola();
+                }, 3000);
+                return;
+            }
+
+            if (errori <= 1)
+                playAudioBene();
+            errori = 0;
+
+            ignoreTouches = false;
+        }
+
+        function letteraErrata()
+        {
+            if (errori < 1) {
                 playAudioNo();
                 errori++;
-
-                if (errori >= 2)
-                {
-                    errori = 0;
-
-                    var letterDiv = $("#lettera-" + currentLetter);
-                    letterDiv[0].innerHTML = $scope.parolaRandom.lettere[currentLetter];
-                    letterDiv[0].innerText = $scope.parolaRandom.lettere[currentLetter];
-
-                    currentLetter++;
-                    if (currentLetter >= $scope.parolaRandom.lettere.length) {
-                        gameOver = true;
-                        return;
-                    }
-                }
+            }
+            else {
+                playAudioNo();
+                errori++;
+                ignoreTouches = true;
+                setTimeout(function () { letteraCorretta(); }, 2000);
             }
         }
     }
@@ -1064,8 +1110,8 @@ myAppControllers.controller('GiocaSillabeController', [
 
         $scope.name = $routeParams.name;
 
-        $scope.parole = $paroleGiocaSillabe;
-        $scope.parolaRandom = getRandomElemento($scope.parole);
+        var paroleRandom = shuffle(JSON.parse(JSON.stringify($paroleGiocaSillabe)));
+        $scope.parolaRandom = paroleRandom.pop(0);
         $scope.shuffledParti = shuffle(JSON.parse(JSON.stringify($scope.parolaRandom.parti)));
         var gameOver = false;
         var currentLettera = 0;
@@ -1073,10 +1119,16 @@ myAppControllers.controller('GiocaSillabeController', [
 
         $scope.playParola = function (parola)
         {
+            if (ignoreTouches)
+                return;
+
             // Get nuova parola
             if (gameOver)
             {
-                $scope.parolaRandom = getRandomElemento($scope.parole);
+                if (paroleRandom.length == 0) {
+                    paroleRandom = shuffle(JSON.parse(JSON.stringify($paroleGiocaSillabe)));
+                }
+                $scope.parolaRandom = paroleRandom.pop(0);
                 $scope.shuffledParti = shuffle(JSON.parse(JSON.stringify($scope.parolaRandom.parti)));
                 $scope.$apply();
                 gameOver = false;
@@ -1094,8 +1146,12 @@ myAppControllers.controller('GiocaSillabeController', [
         }
 
         var errore = false;
+        var ignoreTouches = false;
         $scope.checkSillabaPressed = function (indexPressed)
         {
+            if (ignoreTouches)
+                return;
+
             var element = angular.element('#parte-' + indexPressed + ' > .testo');
             var choosen = $scope.shuffledParti[indexPressed];
             var wanted = $scope.parolaRandom.parti[currentParte];
@@ -1108,11 +1164,19 @@ myAppControllers.controller('GiocaSillabeController', [
 
                 setTimeout(function () { clearSelection(); }, 500);
 
+                ignoreTouches = false;
+
                 currentParte++;
                 if (currentParte >= $scope.parolaRandom.parti.length)
                 {
+                    ignoreTouches = true;
                     gameOver = true;
                     playAudioVittoria();
+                    setTimeout(function () {
+                        ignoreTouches = false;
+                        hintToccaIlBottone();
+                        $scope.playParola();
+                    }, 3000);
                 }
 
                 errore = 0;
@@ -1126,24 +1190,35 @@ myAppControllers.controller('GiocaSillabeController', [
 
                 if (errore >= 2)
                 {
-                    // Duplicato codice di rightAnswer
-                    var parte = $scope.parolaRandom.parti[currentParte];
+                    ignoreTouches = true;
 
-                    for (var i = 0; i < parte.length; i++) {
-                        var letterDiv = $("#lettera-" + currentLettera);
-                        letterDiv[0].innerHTML = $scope.parolaRandom.lettere[currentLettera];
-                        letterDiv[0].innerText = $scope.parolaRandom.lettere[currentLettera];
-                        currentLettera++;
-                    }
+                    setTimeout(function () {
+                        ignoreTouches = false;
 
-                    setTimeout(function () { clearSelection(); }, 500);
+                        // Duplicato codice di rightAnswer
+                        var parte = $scope.parolaRandom.parti[currentParte];
 
-                    currentParte++;
-                    if (currentParte >= $scope.parolaRandom.parti.length) {
-                        gameOver = true;
-                    }
+                        for (var i = 0; i < parte.length; i++) {
+                            var letterDiv = $("#lettera-" + currentLettera);
+                            letterDiv[0].innerHTML = $scope.parolaRandom.lettere[currentLettera];
+                            letterDiv[0].innerText = $scope.parolaRandom.lettere[currentLettera];
+                            currentLettera++;
+                        }
 
-                    errore = 0;
+                        clearSelection();
+
+                        currentParte++;
+                        if (currentParte >= $scope.parolaRandom.parti.length) {
+                            gameOver = true;
+                            setTimeout(function () {
+                                ignoreTouches = false;
+                                hintToccaIlBottone();
+                                $scope.playParola();
+                            }, 3000);
+                        }
+
+                        errore = 0;
+                    }, 2000);
                 }
             }
         }
@@ -1172,6 +1247,106 @@ myAppControllers.controller('GiocaSillabeController', [
             suonoAscoltato = false;
             angular.element('.bg-rosso').removeClass("bg-rosso");
             angular.element('.bg-verde').removeClass("bg-verde");
+        }
+    }
+]);
+
+myAppControllers.controller('RandomController', [
+    '$scope', '$routeParams',
+    function ($scope, $routeParams) {
+
+        function setSottotitolo() {
+            var sottotitolo = $("#sottotitolo_random")[0];
+            var strSottotitolo = $STR_RANDOM_MODE;
+            sottotitolo.innerHTML = strSottotitolo;
+            sottotitolo.innerText = strSottotitolo;
+        }
+        setSottotitolo();
+
+        hintToccaIlBottone();
+
+        $scope.name = $routeParams.name;
+
+        $scope.parole = $paroleMinuscoloScrittura;
+        $scope.parolaRandom = getRandomElemento($scope.parole);
+
+        $scope.playParola = function (parola) {
+            if (gameOver) {
+                gameOver = false;
+                $scope.parolaRandom = getRandomElemento($scope.parole);
+                $scope.$apply();
+                for (var i = 0; i < $scope.parolaRandom.lettere.length; i++) {
+                    var letterDiv = $("#lettera-l-" + i);
+                    letterDiv[0].innerHTML = "_";
+                    letterDiv[0].innerText = "_";
+                }
+                currentLetter = 0;
+                setTimeout(function () {
+                    $scope.playParola(parola);
+                }, 500);
+                return;
+            }
+
+            var audioPlayer = getAudioPlayer('#audio-' + parola.completa);
+            playAudio(audioPlayer);
+            if (currentLetter === 0)
+                angular.element('#lettera-u-' + currentLetter).addClass("lettera_minuscoloscrittura_evidenziata");
+        }
+
+        var currentLetter = 0;
+        var gameOver = false;
+        var errori = 0;
+
+        var ignoreTouches = false;
+        $scope.letteraPremuta = function (lettera) {
+            if (gameOver)
+                return;
+
+            if (ignoreTouches)
+                return;
+
+            if (lettera.toUpperCase() === $scope.parolaRandom.lettere[currentLetter]) {
+                letteraCorretta();
+            }
+            else {
+                letteraErrata();
+            }
+        };
+
+        function letteraCorretta() {
+            var letterDiv = $("#lettera-l-" + currentLetter);
+            letterDiv[0].innerHTML = $scope.parolaRandom.lettere[currentLetter].toUpperCase();
+            letterDiv[0].innerText = $scope.parolaRandom.lettere[currentLetter].toUpperCase();
+
+            currentLetter++;
+            if (currentLetter >= $scope.parolaRandom.lettere.length) {
+                gameOver = true;
+                playAudioVittoria();
+                angular.element('.lettera_minuscoloscrittura_evidenziata').removeClass("lettera_minuscoloscrittura_evidenziata");
+                return;
+            }
+            else {
+                angular.element('.lettera_minuscoloscrittura_evidenziata').removeClass("lettera_minuscoloscrittura_evidenziata");
+                angular.element('#lettera-u-' + currentLetter).addClass("lettera_minuscoloscrittura_evidenziata");
+            }
+
+            playAudioBene();
+            errori = 0;
+
+            ignoreTouches = false;
+        }
+
+        function letteraErrata() {
+            if (errori < 1) {
+                playAudioNo();
+                errori++;
+                ignoreTouches = false;
+            }
+            else {
+                playAudioNo();
+                ignoreTouches = true;
+                setTimeout(function () { letteraCorretta(); }, 2000);
+            }
         }
     }
 ]);

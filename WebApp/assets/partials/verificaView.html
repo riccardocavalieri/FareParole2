@@ -10,7 +10,6 @@
         <div class="wa-main-wrapper">
             <div class="wa-verifica">
                 <div class="box-consonanti" style="position: relative">
-                    <img class="imgToccaCarte" />
                     <div id="parola-{{parola.completa}}" class="carta media ombra premi" ng-repeat="parola in parole" ng-click="checkSelection(parola.completa);" style="background-color: white; padding-left: 10px; padding-right: 10px; font-size: 30px;">
                         <div class="front testo">
                             <span>{{parola.completa.toUpperCase()}}</span>
@@ -22,6 +21,7 @@
                     </div>
                 </div>
                 <div class="box-pulsante">
+                    <img class="imgToccaCarte" style="left: -50px; top: 150px;" />
                     <div class="pulsante audio" ng-click="playSoundScrittura()">
                         <img class="imgToccaBottone" />
                     </div>

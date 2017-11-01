@@ -37,6 +37,7 @@ var myApp = angular.module('myApp', ['ngRoute', 'ngAnimate', 'ngTouch', 'myAppCo
             $routeProvider.when('/minuscoloScrittura', { templateUrl: 'assets/partials/minuscoloScritturaView.html' });
             $routeProvider.when('/gioca/sillabe', { templateUrl: 'assets/partials/giocaSillabeView.html' });
             $routeProvider.when('/gioca/parole', { templateUrl: 'assets/partials/giocaParoleView.html' });
+            $routeProvider.when('/imparaRandom', { templateUrl: 'assets/partials/randomView.html' });
             $routeProvider.when('/leggi', { templateUrl: 'assets/partials/leggiView.html' });
             $routeProvider.when('/crediti', { templateUrl: 'assets/partials/creditiView.html' });
             $routeProvider.when('/versioni', { templateUrl: 'assets/partials/versioniView.html' });
@@ -51,15 +52,16 @@ var $IMG_LETTERA = 'assets/images/lettera.png';
 var $IMG_CARTA_CASO = 'assets/images/lettera-caso.png';
 var $IMG_LETTERA_VUOTA = 'assets/images/lettera-vuota.png';
 
-var $STR_ASCOLTO = 'ASCOLTO';
+var $STR_ASCOLTO = 'AVVIO ';
 var $STR_SCRITTURA = 'SCRITTURA';
-var $STR_PRELETTURA = 'PRE-LETTURA';
+var $STR_PRELETTURA = 'AVVIO LETTURA';
 var $STR_LETTURA = 'LETTURA';
 var $STR_VERIFICA = 'VERIFICA';
-var $STR_MINUSCOLOPRESCRITTURA = 'MINUSCOLO PRE-SCRITTURA';
-var $STR_MINUSCOLOSCRITTURA = 'MINUSCOLO SCRITTURA';
+var $STR_MINUSCOLOPRESCRITTURA = 'STAMPATO MINUSCOLO - AVVIO LETTURA';
+var $STR_MINUSCOLOSCRITTURA = 'STAMPATO MINUSCOLO - AVVIO LETTURA';
 var $STR_GIOCAPAROLE = 'GIOCA CON LE PAROLE';
 var $STR_GIOCASILLABE = 'GIOCA CON LE SILLABE';
+var $STR_RANDOM_MODE = 'TASTIERA COMPUTER';
 var $STR_01 = 'LETTERE DOPPIE';
 var $STR_02 = 'VOCALE INIZIALE';
 var $STR_03 = 'DUE VOCALI';
@@ -95,46 +97,46 @@ var $carteSpeciali = [
 var $carteLivelli = $carteRiga1.concat($carteRiga2).concat($carteRiga3).concat($carteSpeciali);
 
 var $paroleAscolto = [
-    { 'group': '01', 'completa': 'POLLO', 'parti': ['PO', 'LLO'], 'audioParola': 'assets/sounds2/01-lettere-doppie/pollo-sillabe-normale.mp3', 'audioParti': ['assets/sounds2/01-lettere-doppie/pollo-sillaba-01.mp3', 'assets/sounds2/01-lettere-doppie/pollo-sillaba-02.mp3'] },
-    { 'group': '01', 'completa': 'CAFFÈ', 'parti': ['CA', 'FFÈ'], 'audioParola': 'assets/sounds2/01-lettere-doppie/caffe-sillabe-normale.mp3', 'audioParti': ['assets/sounds2/01-lettere-doppie/caffe-sillaba-01.mp3', 'assets/sounds2/01-lettere-doppie/caffe-sillaba-02.mp3'] },
+    { 'group': '01', 'completa': 'POLLO', 'parti': ['PO', 'LLO'], 'audioParola': 'assets/sounds2/01-lettere-doppie/pollo-sillabe-normale.mp3', 'audioParti': ['assets/sounds2/01-lettere-doppie/pollo-sillaba-01.mp3', 'assets/sounds2/01-lettere-doppie/pollo-sillaba-02.mp3'], 'audio': 'assets/sounds2/01-lettere-doppie/pollo.mp3' },
+    { 'group': '01', 'completa': 'CAFFÈ', 'parti': ['CA', 'FFÈ'], 'audioParola': 'assets/sounds2/01-lettere-doppie/caffe-sillabe-normale.mp3', 'audioParti': ['assets/sounds2/01-lettere-doppie/caffe-sillaba-01.mp3', 'assets/sounds2/01-lettere-doppie/caffe-sillaba-02.mp3'], 'audio': 'assets/sounds2/01-lettere-doppie/caffe.mp3' },
 
-    { 'group': '02', 'completa': 'UNO', 'parti': ['U', 'NO'], 'audioParola': 'assets/sounds2/02-vocale-iniziale/uno-sillabe-normale.mp3', 'audioParti': ['assets/sounds2/02-vocale-iniziale/uno-doppio-sillaba-01.mp3', 'assets/sounds2/02-vocale-iniziale/uno-doppio-sillaba-02.mp3'] },
-    { 'group': '02', 'completa': 'ORA', 'parti': ['O', 'RA'], 'audioParola': 'assets/sounds2/02-vocale-iniziale/ora-sillabe-normale.mp3', 'audioParti': ['assets/sounds2/02-vocale-iniziale/ora-sillaba-01.mp3', 'assets/sounds2/02-vocale-iniziale/ora-sillaba-02.mp3'] },
+    { 'group': '02', 'completa': 'UNO', 'parti': ['U', 'NO'], 'audioParola': 'assets/sounds2/02-vocale-iniziale/uno-sillabe-normale.mp3', 'audioParti': ['assets/sounds2/02-vocale-iniziale/uno-doppio-sillaba-01.mp3', 'assets/sounds2/02-vocale-iniziale/uno-doppio-sillaba-02.mp3'], 'audio': 'assets/sounds2/02-vocale-iniziale/uno.mp3' },
+    { 'group': '02', 'completa': 'ORA', 'parti': ['O', 'RA'], 'audioParola': 'assets/sounds2/02-vocale-iniziale/ora-sillabe-normale.mp3', 'audioParti': ['assets/sounds2/02-vocale-iniziale/ora-sillaba-01.mp3', 'assets/sounds2/02-vocale-iniziale/ora-sillaba-02.mp3'], 'audio': 'assets/sounds2/02-vocale-iniziale/ora.mp3' },
 
-    { 'group': '03', 'completa': 'DUE', 'parti': [], 'audioParola': 'assets/sounds2/03-due-vocali/due-sillaba-sillabe-normale.mp3', 'audioParti': ['assets/sounds2/03-due-vocali/due-sillaba-01.mp3'] },
-    { 'group': '03', 'completa': 'FIORE', 'parti': ['FIO', 'RE'], 'audioParola': 'assets/sounds2/03-due-vocali/fiore-sillabe-normale.mp3', 'audioParti': ['assets/sounds2/03-due-vocali/fiore-sillaba-01.mp3', 'assets/sounds2/03-due-vocali/fiore-sillaba-02.mp3'] },
+    { 'group': '03', 'completa': 'DUE', 'parti': [], 'audioParola': 'assets/sounds2/03-due-vocali/due-sillaba-sillabe-normale.mp3', 'audioParti': ['assets/sounds2/03-due-vocali/due-sillaba-01.mp3'], 'audio': 'assets/sounds2/03-due-vocali/due.mp3' },
+    { 'group': '03', 'completa': 'FIORE', 'parti': ['FIO', 'RE'], 'audioParola': 'assets/sounds2/03-due-vocali/fiore-sillabe-normale.mp3', 'audioParti': ['assets/sounds2/03-due-vocali/fiore-sillaba-01.mp3', 'assets/sounds2/03-due-vocali/fiore-sillaba-02.mp3'], 'audio': 'assets/sounds2/03-due-vocali/fiore.mp3' },
 
-    { 'group': '04', 'completa': 'UL', 'parti': ['AL', 'EL', 'IL', 'OL'], 'audioParola': 'assets/sounds2/04-sillaba-inversa/04-al-el-il-ol-ul.mp3', 'audioParti': ['assets/sounds2/04-sillaba-inversa/04-al.mp3', 'assets/sounds2/04-sillaba-inversa/04-el.mp3', 'assets/sounds2/04-sillaba-inversa/04-il.mp3', 'assets/sounds2/04-sillaba-inversa/04-ol.mp3', 'assets/sounds2/04-sillaba-inversa/04-ul.mp3'] },
-    { 'group': '04', 'completa': 'UM', 'parti': ['AM', 'EM', 'IM', 'OM'], 'audioParola': 'assets/sounds2/04-sillaba-inversa/04-am-em-im-om-um.mp3', 'audioParti': ['assets/sounds2/04-sillaba-inversa/04-am.mp3', 'assets/sounds2/04-sillaba-inversa/04-em.mp3', 'assets/sounds2/04-sillaba-inversa/04-im.mp3', 'assets/sounds2/04-sillaba-inversa/04-om.mp3', 'assets/sounds2/04-sillaba-inversa/04-um.mp3'] },
-    { 'group': '04', 'completa': 'UN', 'parti': ['AN', 'EN', 'IN', 'ON'], 'audioParola': 'assets/sounds2/04-sillaba-inversa/04-an-en-in-on-un.mp3', 'audioParti': ['assets/sounds2/04-sillaba-inversa/04-an.mp3', 'assets/sounds2/04-sillaba-inversa/04-en.mp3', 'assets/sounds2/04-sillaba-inversa/04-in.mp3', 'assets/sounds2/04-sillaba-inversa/04-on.mp3', 'assets/sounds2/04-sillaba-inversa/04-un.mp3'] },
-    { 'group': '04', 'completa': 'UR', 'parti': ['AR', 'ER', 'IR', 'OR'], 'audioParola': 'assets/sounds2/04-sillaba-inversa/04-ar-er-ir-or-ur.mp3', 'audioParti': ['assets/sounds2/04-sillaba-inversa/04-ar.mp3', 'assets/sounds2/04-sillaba-inversa/04-er.mp3', 'assets/sounds2/04-sillaba-inversa/04-ir.mp3', 'assets/sounds2/04-sillaba-inversa/04-or.mp3', 'assets/sounds2/04-sillaba-inversa/04-ur.mp3'] },
+    { 'group': '04', 'completa': 'UL', 'parti': ['AL', 'EL', 'IL', 'OL'], 'audioParola': 'assets/sounds2/04-sillaba-inversa/04-al-el-il-ol-ul.mp3', 'audioParti': ['assets/sounds2/04-sillaba-inversa/04-al.mp3', 'assets/sounds2/04-sillaba-inversa/04-el.mp3', 'assets/sounds2/04-sillaba-inversa/04-il.mp3', 'assets/sounds2/04-sillaba-inversa/04-ol.mp3', 'assets/sounds2/04-sillaba-inversa/04-ul.mp3'], 'audio': '' },
+    { 'group': '04', 'completa': 'UM', 'parti': ['AM', 'EM', 'IM', 'OM'], 'audioParola': 'assets/sounds2/04-sillaba-inversa/04-am-em-im-om-um.mp3', 'audioParti': ['assets/sounds2/04-sillaba-inversa/04-am.mp3', 'assets/sounds2/04-sillaba-inversa/04-em.mp3', 'assets/sounds2/04-sillaba-inversa/04-im.mp3', 'assets/sounds2/04-sillaba-inversa/04-om.mp3', 'assets/sounds2/04-sillaba-inversa/04-um.mp3'], 'audio': '' },
+    { 'group': '04', 'completa': 'UN', 'parti': ['AN', 'EN', 'IN', 'ON'], 'audioParola': 'assets/sounds2/04-sillaba-inversa/04-an-en-in-on-un.mp3', 'audioParti': ['assets/sounds2/04-sillaba-inversa/04-an.mp3', 'assets/sounds2/04-sillaba-inversa/04-en.mp3', 'assets/sounds2/04-sillaba-inversa/04-in.mp3', 'assets/sounds2/04-sillaba-inversa/04-on.mp3', 'assets/sounds2/04-sillaba-inversa/04-un.mp3'], 'audio': '' },
+    { 'group': '04', 'completa': 'UR', 'parti': ['AR', 'ER', 'IR', 'OR'], 'audioParola': 'assets/sounds2/04-sillaba-inversa/04-ar-er-ir-or-ur.mp3', 'audioParti': ['assets/sounds2/04-sillaba-inversa/04-ar.mp3', 'assets/sounds2/04-sillaba-inversa/04-er.mp3', 'assets/sounds2/04-sillaba-inversa/04-ir.mp3', 'assets/sounds2/04-sillaba-inversa/04-or.mp3', 'assets/sounds2/04-sillaba-inversa/04-ur.mp3'], 'audio': '' },
 
-    { 'group': '05', 'completa': 'PORTA', 'parti': ['POR', 'TA'], 'audioParola': 'assets/sounds2/05-consonante-intermedia/r/porta-sillabe-normale.mp3', 'audioParti': ['assets/sounds2/05-consonante-intermedia/r/porta-sillaba-01.mp3', 'assets/sounds2/05-consonante-intermedia/r/porta-sillaba-02.mp3'] },
-    { 'group': '05', 'completa': 'BORSA', 'parti': ['BOR', 'SA'], 'audioParola': 'assets/sounds2/05-consonante-intermedia/r/borsa-sillabe-normale.mp3', 'audioParti': ['assets/sounds2/05-consonante-intermedia/r/borsa-sillaba-01.mp3', 'assets/sounds2/05-consonante-intermedia/r/borsa-sillaba-02.mp3'] },
-    { 'group': '05', 'completa': 'CALZE', 'parti': ['CAL', 'ZE'], 'audioParola': 'assets/sounds2/05-consonante-intermedia/l/calze-sillabe-normale.mp3', 'audioParti': ['assets/sounds2/05-consonante-intermedia/l/calze-sillaba-01.mp3', 'assets/sounds2/05-consonante-intermedia/l/calze-sillaba-02.mp3'] },
-    { 'group': '05', 'completa': 'SOLDI', 'parti': ['SOL', 'DI'], 'audioParola': 'assets/sounds2/05-consonante-intermedia/l/soldi-sillabe-normale.mp3.mp3', 'audioParti': ['assets/sounds2/05-consonante-intermedia/l/soldi-sillaba-01.mp3', 'assets/sounds2/05-consonante-intermedia/l/soldi-sillaba-02.mp3'] },
-    { 'group': '05', 'completa': 'BAMBINO', 'parti': ['BAM', 'BI', 'NO'], 'audioParola': 'assets/sounds2/05-consonante-intermedia/m/bambino-sillabe-normale.mp3', 'audioParti': ['assets/sounds2/05-consonante-intermedia/m/bambino-sillaba-01.mp3', 'assets/sounds2/05-consonante-intermedia/m/bambino-sillaba-02.mp3', 'assets/sounds2/05-consonante-intermedia/m/bambino-sillaba-03.mp3'] },
-    { 'group': '05', 'completa': 'GAMBA', 'parti': ['GAM', 'BA'], 'audioParola': 'assets/sounds2/05-consonante-intermedia/m/gamba-sillabe-normale.mp3', 'audioParti': ['assets/sounds2/05-consonante-intermedia/m/gamba-sillaba-01.mp3', 'assets/sounds2/05-consonante-intermedia/m/gamba-sillaba-02.mp3'] },
-    { 'group': '05', 'completa': 'VENTI', 'parti': ['VEN', 'TI'], 'audioParola': 'assets/sounds2/05-consonante-intermedia/n/venti-sillabe-normale.mp3', 'audioParti': ['assets/sounds2/05-consonante-intermedia/n/venti-sillaba-01.mp3', 'assets/sounds2/05-consonante-intermedia/n/venti-sillaba-02.mp3'] },
-    { 'group': '05', 'completa': 'BANCA', 'parti': ['BAN', 'CA'], 'audioParola': 'assets/sounds2/05-consonante-intermedia/n/banca-sillabe-normale.mp3', 'audioParti': ['assets/sounds2/05-consonante-intermedia/n/banca-sillaba-01.mp3', 'assets/sounds2/05-consonante-intermedia/n/banca-sillaba-02.mp3'] },
+    { 'group': '05', 'completa': 'PORTA', 'parti': ['POR', 'TA'], 'audioParola': 'assets/sounds2/05-consonante-intermedia/r/porta-sillabe-normale.mp3', 'audioParti': ['assets/sounds2/05-consonante-intermedia/r/porta-sillaba-01.mp3', 'assets/sounds2/05-consonante-intermedia/r/porta-sillaba-02.mp3'], 'audio': 'assets/sounds2/05-consonante-intermedia/r/porta.mp3' },
+    { 'group': '05', 'completa': 'BORSA', 'parti': ['BOR', 'SA'], 'audioParola': 'assets/sounds2/05-consonante-intermedia/r/borsa-sillabe-normale.mp3', 'audioParti': ['assets/sounds2/05-consonante-intermedia/r/borsa-sillaba-01.mp3', 'assets/sounds2/05-consonante-intermedia/r/borsa-sillaba-02.mp3'], 'audio': 'assets/sounds2/05-consonante-intermedia/r/borsa.mp3' },
+    { 'group': '05', 'completa': 'CALZE', 'parti': ['CAL', 'ZE'], 'audioParola': 'assets/sounds2/05-consonante-intermedia/l/calze-sillabe-normale.mp3', 'audioParti': ['assets/sounds2/05-consonante-intermedia/l/calze-sillaba-01.mp3', 'assets/sounds2/05-consonante-intermedia/l/calze-sillaba-02.mp3'], 'audio': 'assets/sounds2/05-consonante-intermedia/l/calze.mp3' },
+    { 'group': '05', 'completa': 'SOLDI', 'parti': ['SOL', 'DI'], 'audioParola': 'assets/sounds2/05-consonante-intermedia/l/soldi-sillabe-normale.mp3', 'audioParti': ['assets/sounds2/05-consonante-intermedia/l/soldi-sillaba-01.mp3', 'assets/sounds2/05-consonante-intermedia/l/soldi-sillaba-02.mp3'], 'audio': 'assets/sounds2/05-consonante-intermedia/l/soldi.mp3' },
+    { 'group': '05', 'completa': 'BAMBINO', 'parti': ['BAM', 'BI', 'NO'], 'audioParola': 'assets/sounds2/05-consonante-intermedia/m/bambino-sillabe-normale.mp3', 'audioParti': ['assets/sounds2/05-consonante-intermedia/m/bambino-sillaba-01.mp3', 'assets/sounds2/05-consonante-intermedia/m/bambino-sillaba-02.mp3', 'assets/sounds2/05-consonante-intermedia/m/bambino-sillaba-03.mp3'], 'audio': 'assets/sounds2/05-consonante-intermedia/m/bambino.mp3' },
+    { 'group': '05', 'completa': 'GAMBA', 'parti': ['GAM', 'BA'], 'audioParola': 'assets/sounds2/05-consonante-intermedia/m/gamba-sillabe-normale.mp3', 'audioParti': ['assets/sounds2/05-consonante-intermedia/m/gamba-sillaba-01.mp3', 'assets/sounds2/05-consonante-intermedia/m/gamba-sillaba-02.mp3'], 'audio': 'assets/sounds2/05-consonante-intermedia/m/gamba.mp3' },
+    { 'group': '05', 'completa': 'VENTI', 'parti': ['VEN', 'TI'], 'audioParola': 'assets/sounds2/05-consonante-intermedia/n/venti-sillabe-normale.mp3', 'audioParti': ['assets/sounds2/05-consonante-intermedia/n/venti-sillaba-01.mp3', 'assets/sounds2/05-consonante-intermedia/n/venti-sillaba-02.mp3'], 'audio': 'assets/sounds2/05-consonante-intermedia/n/venti.mp3' },
+    { 'group': '05', 'completa': 'BANCA', 'parti': ['BAN', 'CA'], 'audioParola': 'assets/sounds2/05-consonante-intermedia/n/banca-sillabe-normale.mp3', 'audioParti': ['assets/sounds2/05-consonante-intermedia/n/banca-sillaba-01.mp3', 'assets/sounds2/05-consonante-intermedia/n/banca-sillaba-02.mp3'], 'audio': 'assets/sounds2/05-consonante-intermedia/n/banca.mp3' },
 
-    { 'group': '06', 'completa': 'SCHI', 'parti': ['SC', 'SCA', 'SCO', 'SCU', 'SCHE'], 'audioParola': 'assets/sounds2/06-sc-sp-st/06-sc-sca-sco-scu-sche-schi.mp3', 'audioParti': ['assets/sounds2/06-sc-sp-st/06-sc.mp3', 'assets/sounds2/06-sc-sp-st/06-sca.mp3', 'assets/sounds2/06-sc-sp-st/06-sche.mp3', 'assets/sounds2/06-sc-sp-st/06-schi.mp3', 'assets/sounds2/06-sc-sp-st/06-sco.mp3', 'assets/sounds2/06-sc-sp-st/06-sc-sca-sco-scu-sche-schi.mp3'] },
-    { 'group': '06', 'completa': 'SPI', 'parti': ['SP', 'SPA', 'SPO', 'SPU', 'SPE'], 'audioParola': 'assets/sounds2/06-sc-sp-st/06-sp-spa-spo-spu-spe-spi.mp3', 'audioParti': ['assets/sounds2/06-sc-sp-st/06-sp.mp3', 'assets/sounds2/06-sc-sp-st/06-spa.mp3', 'assets/sounds2/06-sc-sp-st/06-spe.mp3', 'assets/sounds2/06-sc-sp-st/06-spi.mp3', 'assets/sounds2/06-sc-sp-st/06-spo.mp3'] },
-    { 'group': '06', 'completa': 'STI', 'parti': ['ST', 'STA', 'STO', 'STU', 'STE'], 'audioParola': 'assets/sounds2/06-sc-sp-st/06-st-sta-sto-stu-ste-sti.mp3', 'audioParti': ['assets/sounds2/06-sc-sp-st/06-st.mp3', 'assets/sounds2/06-sc-sp-st/06-sta.mp3', 'assets/sounds2/06-sc-sp-st/06-ste.mp3', 'assets/sounds2/06-sc-sp-st/06-sti.mp3', 'assets/sounds2/06-sc-sp-st/06-sto.mp3'] },
+    { 'group': '06', 'completa': 'SCHI', 'parti': ['SC', 'SCA', 'SCO', 'SCU', 'SCHE'], 'audioParola': 'assets/sounds2/06-sc-sp-st/06-sc-sca-sco-scu-sche-schi.mp3', 'audioParti': ['assets/sounds2/06-sc-sp-st/06-sc.mp3', 'assets/sounds2/06-sc-sp-st/06-sca.mp3', 'assets/sounds2/06-sc-sp-st/06-sche.mp3', 'assets/sounds2/06-sc-sp-st/06-schi.mp3', 'assets/sounds2/06-sc-sp-st/06-sco.mp3', 'assets/sounds2/06-sc-sp-st/06-sc-sca-sco-scu-sche-schi.mp3'], 'audio': '' },
+    { 'group': '06', 'completa': 'SPI', 'parti': ['SP', 'SPA', 'SPO', 'SPU', 'SPE'], 'audioParola': 'assets/sounds2/06-sc-sp-st/06-sp-spa-spo-spu-spe-spi.mp3', 'audioParti': ['assets/sounds2/06-sc-sp-st/06-sp.mp3', 'assets/sounds2/06-sc-sp-st/06-spa.mp3', 'assets/sounds2/06-sc-sp-st/06-spe.mp3', 'assets/sounds2/06-sc-sp-st/06-spi.mp3', 'assets/sounds2/06-sc-sp-st/06-spo.mp3'], 'audio': '' },
+    { 'group': '06', 'completa': 'STI', 'parti': ['ST', 'STA', 'STO', 'STU', 'STE'], 'audioParola': 'assets/sounds2/06-sc-sp-st/06-st-sta-sto-stu-ste-sti.mp3', 'audioParti': ['assets/sounds2/06-sc-sp-st/06-st.mp3', 'assets/sounds2/06-sc-sp-st/06-sta.mp3', 'assets/sounds2/06-sc-sp-st/06-ste.mp3', 'assets/sounds2/06-sc-sp-st/06-sti.mp3', 'assets/sounds2/06-sc-sp-st/06-sto.mp3'], 'audio': '' },
 
-    { 'group': '07', 'completa': 'BRU', 'parti': ['BR', 'BRA', 'BRE', 'BRI', 'BRO'], 'audioParola': 'assets/sounds2/07-br-fr-tr/07-br-bra-bre-bri-bro-bru.mp3', 'audioParti': ['assets/sounds2/07-br-fr-tr/07-br.mp3', 'assets/sounds2/07-br-fr-tr/07-bra.mp3', 'assets/sounds2/07-br-fr-tr/07-bre.mp3', 'assets/sounds2/07-br-fr-tr/07-bri.mp3', 'assets/sounds2/07-br-fr-tr/07-bro.mp3'] },
-    { 'group': '07', 'completa': 'CRU', 'parti': ['CR', 'CRA', 'CRE', 'CRI', 'CRO'], 'audioParola': 'assets/sounds2/07-br-fr-tr/07-cr-cra-cre-cri-cro-cru.mp3', 'audioParti': ['assets/sounds2/07-br-fr-tr/07-cr.mp3', 'assets/sounds2/07-br-fr-tr/07-cra.mp3', 'assets/sounds2/07-br-fr-tr/07-cre.mp3', 'assets/sounds2/07-br-fr-tr/07-cri.mp3', 'assets/sounds2/07-br-fr-tr/07-cro.mp3'] },
-    { 'group': '07', 'completa': 'DRU', 'parti': ['DR', 'DRA', 'DRE', 'DRI', 'DRO'], 'audioParola': 'assets/sounds2/07-br-fr-tr/07-dr-dra-dre-dri-dro-dru.mp3', 'audioParti': ['assets/sounds2/07-br-fr-tr/07-dr.mp3', 'assets/sounds2/07-br-fr-tr/07-dra.mp3', 'assets/sounds2/07-br-fr-tr/07-dre.mp3', 'assets/sounds2/07-br-fr-tr/07-dri.mp3', 'assets/sounds2/07-br-fr-tr/07-dro.mp3'] },
-    { 'group': '07', 'completa': 'FRU', 'parti': ['FR', 'FRA', 'FRE', 'FRI', 'FRO'], 'audioParola': 'assets/sounds2/07-br-fr-tr/07-fr-fra-fre-fri-fro-fru.mp3', 'audioParti': ['assets/sounds2/07-br-fr-tr/07-fr.mp3', 'assets/sounds2/07-br-fr-tr/07-fra.mp3', 'assets/sounds2/07-br-fr-tr/07-fre.mp3', 'assets/sounds2/07-br-fr-tr/07-fri.mp3', 'assets/sounds2/07-br-fr-tr/07-fro.mp3'] },
-    { 'group': '07', 'completa': 'GRU', 'parti': ['GR', 'GRA', 'GRE', 'GRI', 'GRO'], 'audioParola': 'assets/sounds2/07-br-fr-tr/07-gr-gra-gre-gri-gro-gru.mp3', 'audioParti': ['assets/sounds2/07-br-fr-tr/07-gr.mp3', 'assets/sounds2/07-br-fr-tr/07-gra.mp3', 'assets/sounds2/07-br-fr-tr/07-gre.mp3', 'assets/sounds2/07-br-fr-tr/07-gri.mp3', 'assets/sounds2/07-br-fr-tr/07-gro.mp3', ] },
-    { 'group': '07', 'completa': 'PRU', 'parti': ['PR', 'PRA', 'PRE', 'PRI', 'PRO'], 'audioParola': 'assets/sounds2/07-br-fr-tr/07-pr-pra-pre-pri-pro-pru.mp3', 'audioParti': ['assets/sounds2/07-br-fr-tr/07-pr.mp3', 'assets/sounds2/07-br-fr-tr/07-pra.mp3', 'assets/sounds2/07-br-fr-tr/07-pre.mp3', 'assets/sounds2/07-br-fr-tr/07-pri.mp3', 'assets/sounds2/07-br-fr-tr/07-pro.mp3'] },
-    { 'group': '07', 'completa': 'TRU', 'parti': ['TR', 'TRA', 'TRE', 'TRI', 'TRO'], 'audioParola': 'assets/sounds2/07-br-fr-tr/07-tr-tra-tre-tri-tro-tru.mp3', 'audioParti': ['assets/sounds2/07-br-fr-tr/07-tr.mp3', 'assets/sounds2/07-br-fr-tr/07-tra.mp3', 'assets/sounds2/07-br-fr-tr/07-tre.mp3', 'assets/sounds2/07-br-fr-tr/07-tri.mp3', 'assets/sounds2/07-br-fr-tr/07-tro.mp3'] },
+    { 'group': '07', 'completa': 'BRU', 'parti': ['BR', 'BRA', 'BRE', 'BRI', 'BRO'], 'audioParola': 'assets/sounds2/07-br-fr-tr/07-br-bra-bre-bri-bro-bru.mp3', 'audioParti': ['assets/sounds2/07-br-fr-tr/07-br.mp3', 'assets/sounds2/07-br-fr-tr/07-bra.mp3', 'assets/sounds2/07-br-fr-tr/07-bre.mp3', 'assets/sounds2/07-br-fr-tr/07-bri.mp3', 'assets/sounds2/07-br-fr-tr/07-bro.mp3'], 'audio': '' },
+    { 'group': '07', 'completa': 'CRU', 'parti': ['CR', 'CRA', 'CRE', 'CRI', 'CRO'], 'audioParola': 'assets/sounds2/07-br-fr-tr/07-cr-cra-cre-cri-cro-cru.mp3', 'audioParti': ['assets/sounds2/07-br-fr-tr/07-cr.mp3', 'assets/sounds2/07-br-fr-tr/07-cra.mp3', 'assets/sounds2/07-br-fr-tr/07-cre.mp3', 'assets/sounds2/07-br-fr-tr/07-cri.mp3', 'assets/sounds2/07-br-fr-tr/07-cro.mp3'], 'audio': '' },
+    { 'group': '07', 'completa': 'DRU', 'parti': ['DR', 'DRA', 'DRE', 'DRI', 'DRO'], 'audioParola': 'assets/sounds2/07-br-fr-tr/07-dr-dra-dre-dri-dro-dru.mp3', 'audioParti': ['assets/sounds2/07-br-fr-tr/07-dr.mp3', 'assets/sounds2/07-br-fr-tr/07-dra.mp3', 'assets/sounds2/07-br-fr-tr/07-dre.mp3', 'assets/sounds2/07-br-fr-tr/07-dri.mp3', 'assets/sounds2/07-br-fr-tr/07-dro.mp3'], 'audio': '' },
+    { 'group': '07', 'completa': 'FRU', 'parti': ['FR', 'FRA', 'FRE', 'FRI', 'FRO'], 'audioParola': 'assets/sounds2/07-br-fr-tr/07-fr-fra-fre-fri-fro-fru.mp3', 'audioParti': ['assets/sounds2/07-br-fr-tr/07-fr.mp3', 'assets/sounds2/07-br-fr-tr/07-fra.mp3', 'assets/sounds2/07-br-fr-tr/07-fre.mp3', 'assets/sounds2/07-br-fr-tr/07-fri.mp3', 'assets/sounds2/07-br-fr-tr/07-fro.mp3'], 'audio': '' },
+    { 'group': '07', 'completa': 'GRU', 'parti': ['GR', 'GRA', 'GRE', 'GRI', 'GRO'], 'audioParola': 'assets/sounds2/07-br-fr-tr/07-gr-gra-gre-gri-gro-gru.mp3', 'audioParti': ['assets/sounds2/07-br-fr-tr/07-gr.mp3', 'assets/sounds2/07-br-fr-tr/07-gra.mp3', 'assets/sounds2/07-br-fr-tr/07-gre.mp3', 'assets/sounds2/07-br-fr-tr/07-gri.mp3', 'assets/sounds2/07-br-fr-tr/07-gro.mp3', ], 'audio': '' },
+    { 'group': '07', 'completa': 'PRU', 'parti': ['PR', 'PRA', 'PRE', 'PRI', 'PRO'], 'audioParola': 'assets/sounds2/07-br-fr-tr/07-pr-pra-pre-pri-pro-pru.mp3', 'audioParti': ['assets/sounds2/07-br-fr-tr/07-pr.mp3', 'assets/sounds2/07-br-fr-tr/07-pra.mp3', 'assets/sounds2/07-br-fr-tr/07-pre.mp3', 'assets/sounds2/07-br-fr-tr/07-pri.mp3', 'assets/sounds2/07-br-fr-tr/07-pro.mp3'], 'audio': '' },
+    { 'group': '07', 'completa': 'TRU', 'parti': ['TR', 'TRA', 'TRE', 'TRI', 'TRO'], 'audioParola': 'assets/sounds2/07-br-fr-tr/07-tr-tra-tre-tri-tro-tru.mp3', 'audioParti': ['assets/sounds2/07-br-fr-tr/07-tr.mp3', 'assets/sounds2/07-br-fr-tr/07-tra.mp3', 'assets/sounds2/07-br-fr-tr/07-tre.mp3', 'assets/sounds2/07-br-fr-tr/07-tri.mp3', 'assets/sounds2/07-br-fr-tr/07-tro.mp3'], 'audio': '' },
 
-    { 'group': '08', 'completa': 'GNU', 'parti': ['GN', 'GNA', 'GNE', 'GNI', 'GNO'], 'audioParola': 'assets/sounds2/08-gn/08-gn-gna-gne-gni-gno-gnu.mp3', 'audioParti': ['assets/sounds2/08-gn/08-gn.mp3', 'assets/sounds2/08-gn/08-gna.mp3', 'assets/sounds2/08-gn/08-gne.mp3', 'assets/sounds2/08-gn/08-gni.mp3', 'assets/sounds2/08-gn/08-gno.mp3'] },
+    { 'group': '08', 'completa': 'GNU', 'parti': ['GN', 'GNA', 'GNE', 'GNI', 'GNO'], 'audioParola': 'assets/sounds2/08-gn/08-gn-gna-gne-gni-gno-gnu.mp3', 'audioParti': ['assets/sounds2/08-gn/08-gn.mp3', 'assets/sounds2/08-gn/08-gna.mp3', 'assets/sounds2/08-gn/08-gne.mp3', 'assets/sounds2/08-gn/08-gni.mp3', 'assets/sounds2/08-gn/08-gno.mp3'], 'audio': '' },
 
-    { 'group': '09', 'completa': '', 'parti': ['GLI', 'GLIE', 'GLIA', 'GLIO', 'GLIU'], 'audioParola': 'assets/sounds2/09-gli/09-gli-glie-glia-glio-gliu.mp3', 'audioParti': ['assets/sounds2/09-gli/09-gli-glie-glia-glio-gliu.mp3', 'assets/sounds2/09-gli/09-glie.mp3', 'assets/sounds2/09-gli/09-glia.mp3', 'assets/sounds2/09-gli/09-glio.mp3', 'assets/sounds2/09-gli/09-gliu.mp3'] },
+    { 'group': '09', 'completa': '', 'parti': ['GLI', 'GLIE', 'GLIA', 'GLIO', 'GLIU'], 'audioParola': 'assets/sounds2/09-gli/09-gli-glie-glia-glio-gliu.mp3', 'audioParti': ['assets/sounds2/09-gli/09-gli-glie-glia-glio-gliu.mp3', 'assets/sounds2/09-gli/09-glie.mp3', 'assets/sounds2/09-gli/09-glia.mp3', 'assets/sounds2/09-gli/09-glio.mp3', 'assets/sounds2/09-gli/09-gliu.mp3'], 'audio': '' },
 
-    { 'group': '10', 'completa': '', 'parti': ['SCE', 'SCI', 'SCIA', 'SCIO', 'SCIU'], 'audioParola': 'assets/sounds2/10-sce-sci/10-sce-sci-scia-scio-sciu.mp3', 'audioParti': ['assets/sounds2/10-sce-sci/10-sce-sci-scia-scio-sciu.mp3', 'assets/sounds2/10-sce-sci/10-sci.mp3', 'assets/sounds2/10-sce-sci/10-scia.mp3', 'assets/sounds2/10-sce-sci/10-scio.mp3', 'assets/sounds2/10-sce-sci/10-sciu.mp3'] }
+    { 'group': '10', 'completa': '', 'parti': ['SCE', 'SCI', 'SCIA', 'SCIO', 'SCIU'], 'audioParola': 'assets/sounds2/10-sce-sci/10-sce-sci-scia-scio-sciu.mp3', 'audioParti': ['assets/sounds2/10-sce-sci/10-sce-sci-scia-scio-sciu.mp3', 'assets/sounds2/10-sce-sci/10-sci.mp3', 'assets/sounds2/10-sce-sci/10-scia.mp3', 'assets/sounds2/10-sce-sci/10-scio.mp3', 'assets/sounds2/10-sce-sci/10-sciu.mp3'], 'audio': '' }
 ];
 
 var $paroleScrittura = [
@@ -178,28 +180,119 @@ var $paroleScrittura = [
 ];
 
 var $parolePreLettura = [
-    { 'group': '01', 'completa': 'MARRONE', 'parti': ['MA', 'RRO', 'NE'], 'audioParola': 'assets/sounds2/01-lettere-doppie/marrone-sillabe-normale.mp3', 'audioParti': ['assets/sounds2/01-lettere-doppie/marrone-sillaba-01.mp3', 'assets/sounds2/01-lettere-doppie/marrone-sillaba-02.mp3', 'assets/sounds2/01-lettere-doppie/marrone-sillaba-03.mp3'], 'audioScandito': 'assets/sounds2/01-lettere-doppie/marrone-sillabe-normale.mp3', 'imageURL': 'assets/images/parole/disegno-marrone.png' },
+    {
+        'group': '01',
+        'completa': 'MARRONE',
+        'parti': ['MA', 'RRO', 'NE'],
+        'audioParola': 'assets/sounds2/01-lettere-doppie/marrone.mp3',
+        'audioScandito': 'assets/sounds2/prelettura/marrone.mp3',
+        'imageURL': 'assets/images/parole/disegno-marrone.png'
+    },
 
-    { 'group': '02', 'completa': 'AMORE', 'parti': ['A', 'MO', 'RE'], 'audioParola': 'assets/sounds2/02-vocale-iniziale/amore-sillabe-normale.mp3', 'audioParti': ['assets/sounds2/02-vocale-iniziale/amore-sillaba-01.mp3', 'assets/sounds2/02-vocale-iniziale/amore-sillaba-02.mp3', 'assets/sounds2/02-vocale-iniziale/amore-sillaba-03.mp3'], 'audioScandito': 'assets/sounds2/02-vocale-iniziale/amore-sillabe-normale.mp3', 'imageURL': 'assets/images/parole/disegno-amore.png' },
+    {
+        'group': '02',
+        'completa': 'AMORE',
+        'parti': ['A', 'MO', 'RE'],
+        'audioParola': 'assets/sounds2/02-vocale-iniziale/amore.mp3',
+        'audioScandito': 'assets/sounds2/prelettura/amore.mp3',
+        'imageURL': 'assets/images/parole/disegno-amore.png'
+    },
 
-    { 'group': '03', 'completa': 'CHIAVI', 'parti': ['CHIA', 'VI'], 'audioParola': 'assets/sounds2/03-due-vocali/chiavi-sillabe-normale.mp3', 'audioParti': ['assets/sounds2/03-due-vocali/chiavi-sillaba-01.mp3', 'assets/sounds2/03-due-vocali/chiavi-sillaba-02.mp3'], 'audioScandito': 'assets/sounds2/03-due-vocali/chiavi-sillabe-normale.mp3', 'imageURL': 'assets/images/parole/disegno-chiavi.png' },
+    {
+        'group': '03',
+        'completa': 'CHIAVI',
+        'parti': ['CHIA', 'VI'],
+        'audioParola': 'assets/sounds2/03-due-vocali/chiavi.mp3',
+        'audioScandito': 'assets/sounds2/prelettura/chiavi.mp3',
+        'imageURL': 'assets/images/parole/disegno-chiavi.png'
+    },
 
-    { 'group': '04', 'completa': 'INSALATA', 'parti': ['IN', 'SA', 'LA', 'TA'], 'audioParola': 'assets/sounds2/04-sillaba-inversa/insalata-sillabe-normale.mp3', 'audioParti': ['assets/sounds2/04-sillaba-inversa/insalata-sillaba-01.mp3', 'assets/sounds2/04-sillaba-inversa/insalata-sillaba-02.mp3', 'assets/sounds2/04-sillaba-inversa/insalata-sillaba-03.mp3', 'assets/sounds2/04-sillaba-inversa/insalata-sillaba-04.mp3'], 'audioScandito': 'assets/sounds2/04-sillaba-inversa/insalata-sillabe-normale.mp3', 'imageURL': 'assets/images/parole/disegno-insalata.png' },
+    {
+        'group': '04',
+        'completa': 'INSALATA',
+        'parti': ['IN', 'SA', 'LA', 'TA'],
+        'audioParola': 'assets/sounds2/04-sillaba-inversa/insalata.mp3',
+        'audioScandito': 'assets/sounds2/prelettura/insalata.mp3',
+        'imageURL': 'assets/images/parole/disegno-insalata.png'
+    },
 
-    { 'group': '05', 'completa': 'MERCATO', 'parti': ['MER', 'CA', 'TO'], 'audioParola': 'assets/sounds2/05-consonante-intermedia/r/mercato-sillabe-normale.mp3', 'audioParti': ['assets/sounds2/05-consonante-intermedia/r/mercato-sillaba-01.mp3', 'assets/sounds2/05-consonante-intermedia/r/mercato-sillaba-02.mp3', 'assets/sounds2/05-consonante-intermedia/r/mercato-sillaba-03.mp3'], 'audioScandito': 'assets/sounds2/05-consonante-intermedia/r/mercato-sillabe-normale.mp3', 'imageURL': 'assets/images/parole/disegno-mercato.png' },
-    { 'group': '05', 'completa': 'COLTELLO', 'parti': ['COL', 'TE', 'LLO'], 'audioParola': 'assets/sounds2/05-consonante-intermedia/l/coltello-sillabe-normale.mp3', 'audioParti': ['assets/sounds2/05-consonante-intermedia/l/coltello-sillaba-01.mp3', 'assets/sounds2/05-consonante-intermedia/l/coltello-sillaba-02.mp3', 'assets/sounds2/05-consonante-intermedia/l/coltello-sillaba-03.mp3'], 'audioScandito': 'assets/sounds2/05-consonante-intermedia/l/coltello-sillabe-normale.mp3', 'imageURL': 'assets/images/parole/disegno-coltello.png' },
-    { 'group': '05', 'completa': 'LAMPADINA', 'parti': ['LAM', 'PA', 'DI', 'NA'], 'audioParola': 'assets/sounds2/05-consonante-intermedia/m/lampadina-sillabe-normale.mp3', 'audioParti': ['assets/sounds2/05-consonante-intermedia/m/lampadina-sillaba-01.mp3', 'assets/sounds2/05-consonante-intermedia/m/lampadina-sillaba-02.mp3', 'assets/sounds2/05-consonante-intermedia/m/lampadina-sillaba-03.mp3', 'assets/sounds2/05-consonante-intermedia/m/lampadina-sillaba-04.mp3'], 'audioScandito': 'assets/sounds2/05-consonante-intermedia/m/lampadina-sillabe-normale.mp3', 'imageURL': 'assets/images/parole/disegno-lampadina.png' },
-    { 'group': '05', 'completa': 'DOCUMENTO', 'parti': ['DO', 'CU', 'MEN', 'TO'], 'audioParola': 'assets/sounds2/05-consonante-intermedia/n/documento-sillabe-normale.mp3', 'audioParti': ['assets/sounds2/05-consonante-intermedia/n/documento-sillaba-01.mp3', 'assets/sounds2/05-consonante-intermedia/n/documento-sillaba-02.mp3', 'assets/sounds2/05-consonante-intermedia/n/documento-sillaba-03.mp3', 'assets/sounds2/05-consonante-intermedia/n/documento-sillaba-04.mp3'], 'audioScandito': 'assets/sounds2/05-consonante-intermedia/m/documento-sillabe-normale.mp3', 'imageURL': 'assets/images/parole/disegno-documento.png' },
+    {
+        'group': '05',
+        'completa': 'MERCATO',
+        'parti': ['MER', 'CA', 'TO'],
+        'audioParola': 'assets/sounds2/05-consonante-intermedia/r/mercato.mp3',
+        'audioScandito': 'assets/sounds2/prelettura/mercato.mp3',
+        'imageURL': 'assets/images/parole/disegno-mercato.png'
+    },
+    {
+        'group': '05',
+        'completa': 'COLTELLO',
+        'parti': ['COL', 'TE', 'LLO'],
+        'audioParola': 'assets/sounds2/05-consonante-intermedia/l/coltello.mp3',
+        'audioScandito': 'assets/sounds2/prelettura/coltello.mp3',
+        'imageURL': 'assets/images/parole/disegno-coltello.png'
+    },
+    {
+        'group': '05',
+        'completa': 'LAMPADINA',
+        'parti': ['LAM', 'PA', 'DI', 'NA'],
+        'audioParola': 'assets/sounds2/05-consonante-intermedia/m/lampadina.mp3',
+        'audioScandito': 'assets/sounds2/prelettura/lampadina.mp3',
+        'imageURL': 'assets/images/parole/disegno-lampadina.png'
+    },
+    {
+        'group': '05',
+        'completa': 'DOCUMENTO',
+        'parti': ['DO', 'CU', 'MEN', 'TO'],
+        'audioParola': 'assets/sounds2/05-consonante-intermedia/m/documento.mp3',
+        'audioScandito': 'assets/sounds2/prelettura/documento.mp3',
+        'imageURL': 'assets/images/parole/disegno-documento.png'
+    },
 
-    { 'group': '06', 'completa': 'STAZIONE', 'parti': ['STA', 'ZIO', 'NE'], 'audioParola': 'assets/sounds2/06-sc-sp-st/stazione-sillabe-normale.mp3', 'audioParti': ['assets/sounds2/06-sc-sp-st/stazione-sillaba-01.mp3', 'assets/sounds2/06-sc-sp-st/stazione-sillaba-02.mp3', 'assets/sounds2/06-sc-sp-st/stazione-sillaba-03.mp3'], 'audioScandito': 'assets/sounds2/06-sc-sp-st/stazione-sillabe-normale.mp3', 'imageURL': 'assets/images/parole/disegno-stazione.png' },
+    {
+        'group': '06',
+        'completa': 'STAZIONE',
+        'parti': ['STA', 'ZIO', 'NE'],
+        'audioParola': 'assets/sounds2/06-sc-sp-st/stazione.mp3',
+        'audioScandito': 'assets/sounds2/prelettura/stazione.mp3',
+        'imageURL': 'assets/images/parole/disegno-stazione.png'
+    },
 
-    { 'group': '07', 'completa': 'FRIGO', 'parti': ['FRI', 'GO'], 'audioParola': 'assets/sounds2/07-br-fr-tr/frigo-sillabe-normale.mp3', 'audioParti': ['assets/sounds2/07-br-fr-tr/frigo-sillaba-01.mp3', 'assets/sounds2/07-br-fr-tr/frigo-sillaba-02.mp3'], 'audioScandito': 'assets/sounds2/07-br-fr-tr/frigo-sillabe-normale.mp3', 'imageURL': 'assets/images/parole/disegno-frigo.png' },
+    {
+        'group': '07',
+        'completa': 'FRIGO',
+        'parti': ['FRI', 'GO'],
+        'audioParola': 'assets/sounds2/07-br-fr-tr/frigo.mp3',
+        'audioScandito': 'assets/sounds2/prelettura/frigo.mp3',
+        'imageURL': 'assets/images/parole/disegno-frigo.png'
+    },
 
-    { 'group': '08', 'completa': 'MONTAGNA', 'parti': ['MON', 'TA', 'GNA'], 'audioParola': 'assets/sounds2/08-gn/montagna-sillabe-normale.mp3', 'audioParti': ['assets/sounds2/08-gn/montagna-sillaba-01.mp3', 'assets/sounds2/08-gn/montagna-sillaba-02.mp3', 'assets/sounds2/08-gn/montagna-sillaba-03.mp3'], 'audioScandito': 'assets/sounds2/08-gn/montagna-sillabe-normale.mp3', 'imageURL': 'assets/images/parole/disegno-montagna.png' },
+    {
+        'group': '08',
+        'completa': 'MONTAGNA',
+        'parti': ['MON', 'TA', 'GNA'],
+        'audioParola': 'assets/sounds2/08-gn/montagna.mp3',
+        'audioScandito': 'assets/sounds2/prelettura/montagna.mp3',
+        'imageURL': 'assets/images/parole/disegno-montagna.png'
+    },
 
-    { 'group': '09', 'completa': 'BOTTIGLIA', 'parti': ['BO', 'TTI', 'GLIA'], 'audioParola': 'assets/sounds2/09-gli/bottiglia-sillabe-normale.mp3', 'audioParti': ['assets/sounds2/09-gli/bottiglia-sillaba-01.mp3', 'assets/sounds2/09-gli/bottiglia-sillaba-02.mp3', 'assets/sounds2/09-gli/bottiglia-sillaba-03.mp3'], 'audioScandito': 'assets/sounds2/09-gli/bottiglia-sillabe-normale.mp3', 'imageURL': 'assets/images/parole/disegno-bottiglia.png' },
+    {
+        'group': '09',
+        'completa': 'BOTTIGLIA',
+        'parti': ['BO', 'TTI', 'GLIA'],
+        'audioParola': 'assets/sounds2/09-gli/bottiglia.mp3',
+        'audioScandito': 'assets/sounds2/prelettura/bottiglia.mp3',
+        'imageURL': 'assets/images/parole/disegno-bottiglia.png'
+    },
 
-    { 'group': '10', 'completa': 'SCENDERE', 'parti': ['SCEN', 'DE', 'RE'], 'audioParola': 'assets/sounds2/10-sce-sci/scendere-sillabe-normale.mp3', 'audioParti': ['assets/sounds2/10-sce-sci/scendere-sillaba-01.mp3', 'assets/sounds2/10-sce-sci/scendere-sillaba-02.mp3', 'assets/sounds2/10-sce-sci/scendere-sillaba-03.mp3'], 'audioScandito': 'assets/sounds2/10-sce-sci/scendere-sillabe-normale.mp3', 'imageURL': 'assets/images/parole/disegno-scendere.png' }
+    {
+        'group': '10',
+        'completa': 'SCENDERE',
+        'parti': ['SCEN', 'DE', 'RE'],
+        'audioParola': 'assets/sounds2/10-sce-sci/scendere.mp3',
+        'audioScandito': 'assets/sounds2/prelettura/scendere.mp3',
+        'imageURL': 'assets/images/parole/disegno-scendere.png'
+    }
 ];
 
 var $paroleLettura = [
@@ -370,7 +463,7 @@ var $paroleGiocaParole = [
 { 'completa': 'LIBRO', 'lettere': ['L', 'I', 'B', 'R', 'O'], 'parti': ['LI', 'BRO'], 'audioParola': 'assets/sounds2/gioca-con-le-parole/giocaconleparole-libro.mp3', 'imageURL': 'assets/images/parole/disegno-libro.png' },
 { 'completa': 'LITRO', 'lettere': ['L', 'I', 'T', 'R', 'O'], 'parti': ['LI', 'TRO'], 'audioParola': 'assets/sounds2/gioca-con-le-parole/giocaconleparole-litro.mp3', 'imageURL': 'assets/images/parole/disegno-litro.png' },
 { 'completa': 'LORO', 'lettere': ['L', 'O', 'R', 'O'], 'parti': ['LO', 'RO'], 'audioParola': 'assets/sounds2/gioca-con-le-parole/giocaconleparole-loro.mp3', 'imageURL': 'assets/images/parole/disegno-loro.png' },
-{ 'completa': 'MACCHINA', 'lettere': ['M', 'A', 'G', 'L', 'I', 'A'], 'parti': ['MA', 'CCHI', 'NA'], 'audioParola': 'assets/sounds2/gioca-con-le-parole/giocaconleparole-macchina.mp3', 'imageURL': 'assets/images/parole/disegno-macchina.png' },
+{ 'completa': 'MACCHINA', 'lettere': ['M', 'A', 'C', 'C', 'H', 'I', 'N', 'A'], 'parti': ['MA', 'CCHI', 'NA'], 'audioParola': 'assets/sounds2/gioca-con-le-parole/giocaconleparole-macchina.mp3', 'imageURL': 'assets/images/parole/disegno-macchina.png' },
 { 'completa': 'MAGLIA', 'lettere': ['M', 'A', 'G', 'L', 'I', 'A'], 'parti': ['MA', 'GLIA'], 'audioParola': 'assets/sounds2/gioca-con-le-parole/giocaconleparole-maglia.mp3', 'imageURL': 'assets/images/parole/disegno-maglia.png' },
 { 'completa': 'MAGRO', 'lettere': ['M', 'A', 'G', 'R', 'O'], 'parti': ['MA', 'GRO'], 'audioParola': 'assets/sounds2/gioca-con-le-parole/giocaconleparole-magro.mp3', 'imageURL': 'assets/images/parole/disegno-magro.png' },
 { 'completa': 'MAMMA', 'lettere': ['M', 'A', 'M', 'M', 'A'], 'parti': ['MA', 'MMA'], 'audioParola': 'assets/sounds2/gioca-con-le-parole/giocaconleparole-mamma.mp3', 'imageURL': 'assets/images/parole/disegno-mamma.png' },

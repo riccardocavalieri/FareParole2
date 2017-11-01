@@ -185,6 +185,23 @@ body {
 .wa-ascolta .pulsante-mini-audio:hover {
 	background-color: #6874cf;
 }
+.wa-ascolta .pulsante-mini-leggi {
+	text-align: left;
+	float: left;
+	cursor: pointer;
+	width: 62px;
+	height: 62px;
+	display: block;
+	border: 3px solid #f5f5f5;
+	border-radius: 50%;
+	background-color: #1399bc;
+	background-image: url(../images/ico-leggi-mini.png);
+	background-repeat: no-repeat;
+	background-position: center 8px;
+}
+.wa-ascolta .pulsante-mini-leggi:hover {
+	background-color: #6874cf;
+}
 .wa-ascolta .parte-0 {
 	text-align: left;
 	float: left;
@@ -374,7 +391,7 @@ body {
     margin: 50px 50px;
 }
 .wa-lettura .box-board .box-monitor .box-scrittura {
-    font-size: 60px;
+    font-size: 40px;
 	line-height: 60px;
 	text-align: center;
 	margin: 0 auto 50px auto;
@@ -740,6 +757,9 @@ body {
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 }
+.random {
+    max-width: 60px;
+}
 .carta.grande {
 	width: 232px;
 	height: 316px;
@@ -888,7 +908,6 @@ body {
 	color: #c7241b !important;
 }
 
-/* GENERALI */
 .vaiaimparare {
 	display: none;
 }
@@ -971,6 +990,11 @@ body {
     content: url("../images/finger.png");
     display: none;
 }
+.imgToccaBottone2 {
+    position:absolute;
+    content: url("../images/finger-reverse.png");
+    display: none;
+}
 .imgToccaCarte {
     position:absolute;
     content: url("../images/finger.png");
@@ -986,6 +1010,16 @@ body {
 }
 .pulsante-mini-audio .imgToccaBottone {
     left: -100px;
+    width: 62px;
+    height: 62px;
+}
+.pulsante .imgToccaBottone2 {
+    left: 150px;
+    width: 120px;
+    height: 120px;
+}
+.pulsante-mini-audio .imgToccaBottone2 {
+    left: 150px;
     width: 62px;
     height: 62px;
 }
