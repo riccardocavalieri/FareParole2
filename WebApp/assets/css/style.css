@@ -1,8 +1,5 @@
-﻿@charset "utf-8";
-/* CSS Document */
-
-html {
-    overflow-y: visible; /* serve per abilitare lo scrolling su Google Chrome Packaged Apps */
+﻿html {
+	overflow-y: visible; /* serve per abilitare lo scrolling su Google Chrome Packaged Apps */
 }
 body {
 	font-family: Arial, serif;
@@ -17,7 +14,9 @@ body {
 	background-repeat: no-repeat;
 }
 .notapiepagina {
-	text-align:center}
+	text-align: center;
+	padding-top: 50px;
+}
 .wa-header {
 	background-color: #a2add0;
 	text-align: center;
@@ -40,7 +39,7 @@ body {
 }
 .bottone-sx:hover {
 	opacity: 0.5;
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha"(Opacity=50);
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
 }
 .bottone-dx {
 	float: right;
@@ -71,12 +70,11 @@ body {
 .link-a-gioca:hover {
 }
 .sottotitolo {
-    font-size: 15px;
+	font-size: 15px;
 	text-align: right;
-    padding-right: 40px;
+	padding-right: 40px;
 	padding-top: 10px;
 }
-
 /* WA-HOME :: HOME */
 .wa-home .box-home {
 	text-align: center;
@@ -99,7 +97,6 @@ body {
 .wa-home .pulsante-mini-audio:hover {
 	background-color: #6874cf;
 }
-
 /* WA-IMPARA :: SCHERMATA IMPARA */
 .wa-impara {
 }
@@ -125,9 +122,8 @@ body {
 	margin: 0 20px;
 }
 .wa-impara .box-impara .imgToccaCarte {
-    top: 40%;
+	top: 40%;
 }
-
 /* WA-GIOCA :: SCHERMATA GIOCA */
 .bg-gioca {
 	background-color: #e79a13
@@ -159,7 +155,6 @@ body {
 .wa-gioca .pulsante-mini-audio:hover {
 	background-color: #6874cf;
 }
-
 /* WA-ASCOLTA :: SCHERMATA ASCOLTO */
 .wa-ascolta .box-sillabazione {
 	font-size: 30px;
@@ -244,14 +239,13 @@ body {
 	width: 110px;
 	margin-left: 90px;
 }
-
 /* WA-SCRITTURA */
 .wa-scrittura .box-board .tastiera {
-    margin-top: 10px; 
-    margin-right: 5px; 
-    margin-bottom: 10px; 
-    margin-left: 5px;
-} 
+	margin-top: 10px;
+	margin-right: 5px;
+	margin-bottom: 10px;
+	margin-left: 5px;
+}
 .wa-scrittura .box-board .box-scrittura {
 	font-size: 50px;
 	line-height: 70px;
@@ -262,14 +256,13 @@ body {
 	border-radius: 10px;
 	-moz-border-radius: 10px;
 	-webkit-border-radius: 10px;
-    display: inline;
-    padding-bottom: 20px;
-    padding-right: 20px;
-    display: inline;
-    padding: 30px;
-
-    display: inline-block;
-    vertical-align: middle;
+	display: inline;
+	padding-bottom: 20px;
+	padding-right: 20px;
+	display: inline;
+	padding: 30px;
+	display: inline-block;
+	vertical-align: middle;
 }
 .wa-scrittura .box-board .box-pulsante {
 	text-align: center;
@@ -279,20 +272,19 @@ body {
 }
 .wa-scrittura .box-board .box-card {
 	display: inline-block;
-    margin-left: 20px;
-    vertical-align: top;
-    background-color: #fff;
-    border-radius: 5px;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    padding: 10px;
-
-    display: inline-block;
-    vertical-align: middle;
+	margin-left: 20px;
+	vertical-align: top;
+	background-color: #fff;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	padding: 10px;
+	display: inline-block;
+	vertical-align: middle;
 }
 .wa-scrittura .box-board .box-card img {
-    width: 120px;
-    height: 120px; 
+	width: 120px;
+	height: 120px;
 }
 .wa-scrittura .box-board #keyboard {
 }
@@ -309,8 +301,7 @@ body {
 	margin: 10px 5px;
 }
 .wa-scrittura .box-board .box-letter img {
-	max-width: 70px;
-	/*
+	max-width: 70px;/*
 	-webkit-box-shadow: 7px 7px 5px 0px rgba(120,120,120,1);
 	-moz-box-shadow: 7px 7px 5px 0px rgba(120,120,120,1);
 	box-shadow: 7px 7px 5px 0px rgba(120,120,120,1);
@@ -322,10 +313,10 @@ body {
 	filter: alpha(opacity=70);
 }
 .wa-scrittura .box-board .box-monitor {
-    margin: 0px 0px 30px 0;
+	margin: 0px 0px 30px 0;
 }
 .wa-scrittura .box-board .box-monitor .box-scrittura .lettera-0 {
-    margin-left: 25px;
+	margin-left: 25px;
 }
 .wa-scrittura .box-board .box-monitor .box-scrittura .lettera {
 	margin-right: 5px;
@@ -334,113 +325,107 @@ body {
 	background-color: #FFCFD0 !important;
 	cursor: pointer;
 }
-.lettera_scrittura_evidenziata 
-{
-    color: #43a86c;
+.lettera_scrittura_evidenziata {
+	color: #43a86c;
 }
-
 /* WA-PRELETTURA */
 .wa-preLettura .box-board {
-
 }
 .wa-preLettura .box-board .box-monitor {
-    margin: 50px 50px;
+	margin: 50px 50px;
 }
 .wa-preLettura .box-board .box-monitor .box-scrittura {
-    font-size: 60px;
+	font-size: 60px;
 	line-height: 60px;
 	text-align: center;
 	margin: 0 auto 50px auto;
 	width: 250px;
 	background-color: #fff;
-    display: inline;
-    padding-left: 20px;
-    padding-bottom: 20px;
-    padding-top: 20px;
+	display: inline;
+	padding-left: 20px;
+	padding-bottom: 20px;
+	padding-top: 20px;
 }
 .wa-preLettura .box-board .box-monitor .box-scrittura .parte {
-    display: inline-table;
+	display: inline-table;
 	padding: 20px 0;
 	margin: 0;
-    margin-left: 20px;
-    margin-right: 20px;
+	margin-left: 20px;
+	margin-right: 20px;
 }
 .wa-preLettura .box-board .box-card {
 	display: block;
-    margin-left: 20px;
-    vertical-align: top;
-    border-radius: 5px;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
+	margin-left: 20px;
+	vertical-align: top;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
 }
 .wa-preLettura .box-board .box-card img {
 	background-color: #fff;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
-    border: 4px solid #fff;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border: 4px solid #fff;
 }
 .wa-preLettura .box-board .box-card .hidden {
 	display: none;
 }
-
 /* WA-LETTURA */
 .wa-lettura .box-board {
-
 }
 .wa-lettura .box-board .box-monitor {
-    margin: 50px 50px;
+	margin: 50px 50px;
 }
 .wa-lettura .box-board .box-monitor .box-scrittura {
-    font-size: 40px;
+	font-size: 40px;
 	line-height: 60px;
 	text-align: center;
 	margin: 0 auto 50px auto;
 	width: 250px;
 	background-color: #fff;
-    display: inline;
-    padding-left: 20px;
-    padding-bottom: 20px;
-    padding-top: 20px;
+	display: inline;
+	padding-left: 20px;
+	padding-bottom: 20px;
+	padding-top: 20px;
 }
 .wa-lettura .box-board .box-monitor .box-scrittura .parte {
-    display: inline-table;
+	display: inline-table;
 	padding: 20px 0;
 	margin: 0;
-    margin-left: 20px;
-    margin-right: 20px;
+	margin-left: 20px;
+	margin-right: 20px;
 }
 .wa-lettura .box-board .box-card {
 	display: block;
-    margin-left: 20px;
-    vertical-align: top;
-    border-radius: 5px;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
+	margin-left: 20px;
+	vertical-align: top;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
 }
 .wa-lettura .box-board .box-card img {
 	background-color: #fff;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
-    border: 4px solid #fff;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border: 4px solid #fff;
 }
 .wa-lettura .box-board .box-card .hidden {
 	display: none;
 }
-
 /* WA-VERIFICA */
 .wa-verifica .box-consonanti .box-card {
 	display: block;
-    margin-left: 20px;
-    vertical-align: top;
-    border-radius: 5px;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
+	margin-left: 20px;
+	vertical-align: top;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
 }
 .wa-verifica .box-card img {
 	background-color: #fff;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
-    border: 4px solid #fff;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border: 4px solid #fff;
 }
 .wa-verifica .box-card .hidden {
 	display: none;
@@ -459,50 +444,47 @@ body {
 	margin: 0 auto;
 }
 .wa-verifica #carta-anteprima {
-    background-color: #fff;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
-    border: 4px solid #fff;
+	background-color: #fff;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border: 4px solid #fff;
 }
-
 /* WA-MINUSCOLO PRESCRITTURA */
 .wa-minuscoloPreScrittura .box-board {
-
 }
 .wa-minuscoloPreScrittura .box-board .box-monitor {
-    margin: 50px 50px;
+	margin: 50px 50px;
 }
 .wa-minuscoloPreScrittura .box-board .box-monitor .box-scrittura {
-    font-size: 50px;
+	font-size: 50px;
 	line-height: 70px;
 	text-align: center;
 	background-color: #fff;
-    padding-left: 20px;
-    padding-bottom: 20px;
-    padding-top: 20px;
+	padding-left: 20px;
+	padding-bottom: 20px;
+	padding-top: 20px;
 }
 .wa-minuscoloPreScrittura .box-board .box-monitor .box-scrittura .parte {
-    display: inline-table;
+	display: inline-table;
 	padding: 20px 0;
 	margin: 0;
-    margin-left: 20px;
-    margin-right: 20px;
+	margin-left: 20px;
+	margin-right: 20px;
 }
-
 /* WA-MINUSCOLO SCRITTURA */
 .wa-minuscoloscrittura .box-board .tastiera {
-    margin-top: 10px; 
-    margin-right: 5px; 
-    margin-bottom: 10px; 
-    margin-left: 5px;
-} 
+	margin-top: 10px;
+	margin-right: 5px;
+	margin-bottom: 10px;
+	margin-left: 5px;
+}
 .wa-minuscoloscrittura .box-board .box-scrittura {
-    font-size: 55px;
+	font-size: 55px;
 	line-height: 55px;
 	text-align: center;
 	background-color: #fff;
-    padding-left: 15px;
-    padding-bottom: 15px;
+	padding-left: 15px;
+	padding-bottom: 15px;
 }
 .wa-minuscoloscrittura .box-board .box-pulsante {
 	text-align: center;
@@ -512,20 +494,19 @@ body {
 }
 .wa-minuscoloscrittura .box-board .box-card {
 	display: inline-block;
-    margin-left: 20px;
-    vertical-align: top;
-    background-color: #fff;
-    border-radius: 5px;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    padding: 10px;
-
-    display: inline-block;
-    vertical-align: middle;
+	margin-left: 20px;
+	vertical-align: top;
+	background-color: #fff;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	padding: 10px;
+	display: inline-block;
+	vertical-align: middle;
 }
 .wa-minuscoloscrittura .box-board .box-card img {
-    width: 120px;
-    height: 120px; 
+	width: 120px;
+	height: 120px;
 }
 .wa-minuscoloscrittura .box-board #keyboard {
 }
@@ -542,8 +523,7 @@ body {
 	margin: 10px 5px;
 }
 .wa-minuscoloscrittura .box-board .box-letter img {
-	max-width: 70px;
-	/*
+	max-width: 70px;/*
 	-webkit-box-shadow: 7px 7px 5px 0px rgba(120,120,120,1);
 	-moz-box-shadow: 7px 7px 5px 0px rgba(120,120,120,1);
 	box-shadow: 7px 7px 5px 0px rgba(120,120,120,1);
@@ -567,7 +547,7 @@ body {
 	margin: 5px auto 30px;
 }
 .wa-minuscoloscrittura .box-board .box-monitor .box-scrittura .lettera-0 {
-    margin-left: 25px;
+	margin-left: 25px;
 }
 .wa-minuscoloscrittura .box-board .box-monitor .box-scrittura .lettera {
 	margin-right: 5px;
@@ -577,16 +557,15 @@ body {
 	cursor: pointer;
 }
 .lettera_minuscoloscrittura_evidenziata {
-    color: #43a86c;
+	color: #43a86c;
 }
-
 /* WA-GIOCA PAROLE */
 .wa-giocaparole .box-board .tastiera {
-    margin-top: 10px; 
-    margin-right: 5px; 
-    margin-bottom: 10px; 
-    margin-left: 5px;
-} 
+	margin-top: 10px;
+	margin-right: 5px;
+	margin-bottom: 10px;
+	margin-left: 5px;
+}
 .wa-giocaparole .box-board .box-scrittura {
 	font-size: 50px;
 	line-height: 70px;
@@ -597,14 +576,13 @@ body {
 	border-radius: 10px;
 	-moz-border-radius: 10px;
 	-webkit-border-radius: 10px;
-    display: inline;
-    padding-bottom: 20px;
-    padding-right: 20px;
-    display: inline;
-    padding: 30px;
-
-    display: inline-block;
-    vertical-align: middle;
+	display: inline;
+	padding-bottom: 20px;
+	padding-right: 20px;
+	display: inline;
+	padding: 30px;
+	display: inline-block;
+	vertical-align: middle;
 }
 .wa-giocaparole .box-board .box-pulsante {
 	text-align: center;
@@ -614,20 +592,19 @@ body {
 }
 .wa-giocaparole .box-board .box-card {
 	display: inline-block;
-    margin-left: 20px;
-    vertical-align: top;
-    background-color: #fff;
-    border-radius: 5px;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    padding: 10px;
-
-    display: inline-block;
-    vertical-align: middle;
+	margin-left: 20px;
+	vertical-align: top;
+	background-color: #fff;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	padding: 10px;
+	display: inline-block;
+	vertical-align: middle;
 }
 .wa-giocaparole .box-board .box-card img {
-    width: 120px;
-    height: 120px; 
+	width: 120px;
+	height: 120px;
 }
 .wa-giocaparole .box-board #keyboard {
 }
@@ -644,8 +621,7 @@ body {
 	margin: 10px 5px;
 }
 .wa-giocaparole .box-board .box-letter img {
-	max-width: 70px;
-	/*
+	max-width: 70px;/*
 	-webkit-box-shadow: 7px 7px 5px 0px rgba(120,120,120,1);
 	-moz-box-shadow: 7px 7px 5px 0px rgba(120,120,120,1);
 	box-shadow: 7px 7px 5px 0px rgba(120,120,120,1);
@@ -660,7 +636,7 @@ body {
 	margin: 0px 0px 30px;
 }
 .wa-giocaparole .box-board .box-monitor .box-scrittura .lettera-0 {
-    margin-left: 25px;
+	margin-left: 25px;
 }
 .wa-giocaparole .box-board .box-monitor .box-scrittura .lettera {
 	margin-right: 5px;
@@ -669,14 +645,13 @@ body {
 	background-color: #FFCFD0 !important;
 	cursor: pointer;
 }
-
 /* WA-GIOCA SILLABE */
 .wa-giocasillabe .box-board .tastiera {
-    margin-top: 10px; 
-    margin-right: 5px; 
-    margin-bottom: 10px; 
-    margin-left: 5px;
-} 
+	margin-top: 10px;
+	margin-right: 5px;
+	margin-bottom: 10px;
+	margin-left: 5px;
+}
 .wa-giocasillabe .box-board .box-scrittura {
 	font-size: 60px;
 	line-height: 60px;
@@ -687,14 +662,13 @@ body {
 	border-radius: 10px;
 	-moz-border-radius: 10px;
 	-webkit-border-radius: 10px;
-    display: inline;
-    padding-bottom: 20px;
-    padding-right: 20px;
-    display: inline;
-    padding: 30px;
-
-    display: inline-block;
-    vertical-align: middle;
+	display: inline;
+	padding-bottom: 20px;
+	padding-right: 20px;
+	display: inline;
+	padding: 30px;
+	display: inline-block;
+	vertical-align: middle;
 }
 .wa-giocasillabe .box-board .box-pulsante {
 	text-align: center;
@@ -704,32 +678,29 @@ body {
 }
 .wa-giocasillabe .box-board .box-card {
 	display: inline-block;
-    margin-left: 20px;
-    vertical-align: top;
-    background-color: #fff;
-    border-radius: 5px;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    padding: 10px;
-
-    display: inline-block;
-    vertical-align: middle;
+	margin-left: 20px;
+	vertical-align: top;
+	background-color: #fff;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	padding: 10px;
+	display: inline-block;
+	vertical-align: middle;
 }
 .wa-giocasillabe .box-board .box-card img {
-    width: 120px;
-    height: 120px; 
+	width: 120px;
+	height: 120px;
 }
 .wa-giocasillabe .box-board .box-monitor {
 	margin: 50px 50px;
 }
 .wa-giocasillabe .box-board .box-monitor .box-scrittura .lettera-0 {
-    margin-left: 25px;
+	margin-left: 25px;
 }
 .wa-giocasillabe .box-board .box-monitor .box-scrittura .lettera {
 	margin-right: 5px;
 }
-
-
 /* WA-CARTA :: SCHERMATA CARTA */
 .carta {
 	display: inline-table;
@@ -739,7 +710,7 @@ body {
 	-webkit-border-radius: 10px;
 	border: 4px solid #c3b3b3;
 	border: 4px solid #fff;
-    cursor: pointer;
+	cursor: pointer;
 	/*background-color: #fff*/;
 }
 .carta .testo {
@@ -758,7 +729,7 @@ body {
 	-webkit-border-radius: 5px;
 }
 .random {
-    max-width: 60px;
+	max-width: 60px;
 }
 .carta.grande {
 	width: 232px;
@@ -812,15 +783,14 @@ body {
 	background-color: #FFCFD0 !important;
 	cursor: pointer;
 }
-
 /* GENERALI */
 .opacity-100 {
 	opacity: 1;
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha"(Opacity=100);
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
 }
 .opacity-80 {
 	opacity: 1;
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha"(Opacity=80);
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
 }
 .cursor-hand {
 	cursor: pointer;
@@ -907,7 +877,6 @@ body {
 .c-rosso {
 	color: #c7241b !important;
 }
-
 .vaiaimparare {
 	display: none;
 }
@@ -917,16 +886,15 @@ body {
 .wa-menuprovvisorio {
 	display: none;
 }
-
 /* ANIMAZIONI COMUNI */
 .parte-evidenziata {
-    color: #43a86c;
+	color: #43a86c;
 	-webkit-transition: color .3s ease-in;
 	-moz-transition: color .3s ease-in;
 	-o-transition: color .3s ease-in;
 	-ms-transition: color .3s ease-in;
 	transition: color .3s ease-in;
-    -webkit-transition-delay: 0.1s;
+	-webkit-transition-delay: 0.1s;
 	-moz-transition-delay: 0.1s;
 	-o-transition-delay: 0.1s;
 	-ms-transition-delay: 0.1s;
@@ -977,60 +945,277 @@ body {
 .bg-crediti {
 	background-color: rgba(255,255,255,1.00)
 }
-
 /* COMUNI */
 .pulsante {
-    position: relative;
+	position: relative;
 }
 .pulsante-mini-audio {
-    position: relative;
+	position: relative;
 }
 .imgToccaBottone {
-    position:absolute;
-    content: url("../images/finger.png");
-    display: none;
+	position: absolute;
+	content: url("../images/finger.png");
+	display: none;
 }
 .imgToccaBottone2 {
-    position:absolute;
-    content: url("../images/finger-reverse.png");
-    display: none;
+	position: absolute;
+	content: url("../images/finger-reverse.png");
+	display: none;
 }
 .imgToccaCarte {
-    position:absolute;
-    content: url("../images/finger.png");
-    display: none;
-    width: 120px;
-    height: 120px;
-    left: -100px;
+	position: absolute;
+	content: url("../images/finger.png");
+	display: none;
+	width: 120px;
+	height: 120px;
+	left: -100px;
 }
 .pulsante .imgToccaBottone {
-    left: -150px;
-    width: 120px;
-    height: 120px;
+	left: -150px;
+	width: 120px;
+	height: 120px;
 }
 .pulsante-mini-audio .imgToccaBottone {
-    left: -100px;
-    width: 62px;
-    height: 62px;
+	left: -100px;
+	width: 62px;
+	height: 62px;
 }
 .pulsante .imgToccaBottone2 {
-    left: 150px;
-    width: 120px;
-    height: 120px;
+	left: 150px;
+	width: 120px;
+	height: 120px;
 }
 .pulsante-mini-audio .imgToccaBottone2 {
-    left: 150px;
-    width: 62px;
-    height: 62px;
+	left: 150px;
+	width: 62px;
+	height: 62px;
 }
 #imgSpeaker {
-    content: url("../images/ico-speaker-loud.png");
-    position: fixed; 
-    bottom: 10px; 
-    right: 10px; 
-    width: 48px;
-    cursor: pointer;
+	content: url("../images/ico-speaker-loud.png");
+	position: fixed;
+	bottom: 10px;
+	right: 10px;
+	width: 48px;
+	cursor: pointer;
 }
 #imgSpeaker.audioMuted {
-    content: url("../images/ico-speaker-mute.png");
+	content: url("../images/ico-speaker-mute.png");
+}
+.sillaba-a {
+	margin-left: 20px;
+	margin-right: 20px;
+	width: auto;
+	min-width: 140px;
+}
+.sillaba-b {
+	left: 0px;
+	height: 60px;
+}
+.sillaba-c {
+	margin-left: 10px;
+}
+img.logofooter {
+	width: 100%;
+}
+.cartaverifica {
+	background-color: white;
+	padding-left: 10px;
+	padding-right: 10px;
+	font-size: 30px;
+}
+.imgToccaCarteverifica {
+	left: -50px;
+	top: 150px;
+}
+.box-card-verifica {
+	text-align: -webkit-center;
+	margin-top: 5px;
+}
+.imgToccaBottone {
+}
+
+@media (max-width: 800px) {
+.wa-leggi {
+	padding: 0 20px;
+}
+img.imgToccaBottone, img.imgToccaCarte {
+	display: none !important;
+	width: 0px;
+}
+.wa-main-wrapper {
+	width: 100%;
+	min-height: 680px;
+	min-height: 535px;
+	height: 100%;
+	margin: 0 auto;
+	padding: 30px 0 0 0;/* background-color: #a3d8e5; */
+}
+.carta.media {
+	width: 100px;
+	height: auto;
+	font-size: 20px;
+	text-align: center;
+	padding: 0 0 0 0;
+	margin: 0;
+	vertical-align: top;
+}
+.notapiepagina {
+	font-size: 12px;
+	padding-top: 10px;
+}
+.wa-ascolta .box-sillabazione {
+	font-size: 15px;
+	line-height: 68px;
+	margin: 0;
+	padding: 10px 0 10px 20px;
+	border-bottom: 2px #fff solid;
+}
+.wa-ascolta .sillaba {
+	text-align: left;
+	float: left;
+	width: 40px;
+	margin-left: 30px;
+}
+.sillaba-a {
+	min-width: 60px;
+}
+.carta img {
+	width: 100px;
+}
+.wa-scrittura .box-board .carta.tastiera img, .wa-minuscoloscrittura .box-board #keyboard img {
+	width: 50px;
+}
+.wa-minuscoloscrittura.wa-tastieracomputer .box-board #keyboard img, .wa-giocaparole .carta img {
+	width: 35px !important;
+}
+.sillaba-a {
+	margin-left: 20px;
+	margin-right: 20px;
+	width: auto;
+	min-width: 60px;
+}
+.wa-ascolta .sillaba {
+	margin-left: 20px;
+}
+.wa-ascolta .parte-0 {
+	text-align: left;
+	float: left;
+	width: 60px;
+	margin-left: 20px;
+}
+.wa-ascolta .parte-1 {
+	text-align: left;
+	float: left;
+	width: 60px;
+	margin-left: 20px;
+}
+.wa-ascolta .parte-2 {
+	text-align: left;
+	float: left;
+	width: 60px;
+	margin-left: 20px;
+}
+.wa-ascolta .parte-3 {
+	text-align: left;
+	float: left;
+	width: 60px;
+	margin-left: 20px;
+}
+.wa-ascolta .parte-4 {
+	text-align: left;
+	float: left;
+	width: 60px;
+	margin-left: 20px;
+}
+.wa-ascolta .sillaba {
+	text-align: left;
+	float: left;
+	width: 80px;
+	margin-left: 20px;
+}
+.pulsante {
+	cursor: pointer;
+	width: 60px;
+	height: 60px;
+}
+.pulsante.audio {
+	background-size: 70%;
+}
+.pulsante.leggi {
+	background-size: 70%;
+}
+.wa-scrittura .box-board .box-scrittura {
+	font-size: 25px;
+	line-height: 70px;
+	text-align: center;
+	margin: 0 auto 20px auto;
+	width: 250px;
+	background-color: #fff;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	display: inline;
+	padding-bottom: 20px;
+	padding-right: 20px;
+	display: inline;
+	padding: 20px;
+	display: inline-block;
+	vertical-align: middle;
+}
+.wa-preLettura .box-board .box-monitor .box-scrittura {
+	font-size: 30px;
+}
+.wa-minuscoloscrittura .box-board .box-scrittura {
+	font-size: 35px;
+	line-height: 35px;
+}
+.wa-minuscoloPreScrittura .box-board .box-monitor .box-scrittura {
+	font-size: 30px;
+	line-height: 60px;
+}
+.box-scrittura-global {
+	display: inline-block;
+	min-width: 300px;
+	margin-right: 160px;
+}
+.wa-lettura .box-board .box-monitor .box-scrittura {
+	font-size: 30px;
+	line-height: 60px;
+	text-align: center;
+}
+.wa-verifica .box-consonanti .carta {
+	margin: 0 15px;
+}
+.wa-lettura .box-board .box-monitor .box-scrittura .parte {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+.wa-minuscoloscrittura .box-board .box-monitor {
+	margin: 30px auto 30px;
+}
+.wa-minuscoloPreScrittura .box-board .box-monitor {
+	margin: 30px 50px;
+}
+.wa-minuscoloPreScrittura .box-board .box-monitor .box-scrittura {
+	font-size: 20px;
+	line-height: 50px;
+}
+.wa-giocasillabe .box-board .box-monitor {
+	margin: 30px 10px;
+}
+.wa-giocasillabe .box-board .box-scrittura {
+	font-size: 30px;
+	line-height: 60px;
+	text-align: center;
+	margin: 0 auto 50px auto;
+	width: 150px;
+}
+.wa-giocaparole .box-board .box-scrittura {
+	font-size: 30px;
+	line-height: 60px;
+	text-align: center;
+}
+.titolo img {
+	width: 50%;
+}
 }

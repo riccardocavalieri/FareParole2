@@ -6,22 +6,20 @@
         <div class="bottone-dx"><a href="#/scrittura/{{name}}"><img src="assets/images/bottone-dx.png" /></a></div>
     </div>
     <div class="sottotitolo" id="sottotitolo_ascolto"></div>
-    <br />
-    <div class="notapiepagina">La divisione delle parole è fonetica e non rispetta necessariamente la divisione sillabica</div>
-    <br />
+ 
     <div class="wa-main">
         <div class="wa-main-wrapper">
             <div class="wa-ascolta">
                 <div id="sillabazione-{{parola.completa}}" class="box-sillabazione" ng-repeat="parola in parole">
-                    <img class="imgToccaBottone" style="left: 0px; height: 60px;" />
+                    <img class="imgToccaBottone sillaba-b" />
                     <div class="pulsante-mini-audio" ng-click="playParola(parola);" ng-show="showPlayButton"></div>
-                    <div id="sillaba-{{parola.completa}}-2" class="sillaba" style="margin-left: 20px; margin-right: 20px; width: auto; min-width: 140px" ng-show="showPlayButton">
+                    <div id="sillaba-{{parola.completa}}-2" class="sillaba sillaba-a" ng-show="showPlayButton">
                         {{parola.completa.toUpperCase()}}
                     </div>
                     <audio id="audio-{{parola.completa}}-2" ng-src="{{parola.audio}}" type="audio/mpeg">
                         Your browser does not support this audio format.
                     </audio>
-                    <div class="pulsante-mini-audio" ng-click="playParolaSillabata(parola);" style="margin-left: 10px;"></div>
+                    <div class="pulsante-mini-audio sillaba-c" ng-click="playParolaSillabata(parola);"></div>
                     <audio id="audio-{{parola.completa}}" ng-src="{{parola.audioParola}}" type="audio/mpeg">
                         Your browser does not support this audio format.
                     </audio>
@@ -32,6 +30,7 @@
                     <div class="clear"></div>
                 </div>
             </div>
+            <div class="notapiepagina">La divisione delle parole è fonetica e non rispetta necessariamente la divisione sillabica</div>
         </div>
     </div>
 </span>
