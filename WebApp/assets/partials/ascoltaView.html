@@ -12,8 +12,8 @@
             <div class="wa-ascolta">
                 <div id="sillabazione-{{parola.completa}}" class="box-sillabazione" ng-repeat="parola in parole">
                     <img class="imgToccaBottone sillaba-b" />
-                    <div class="pulsante-mini-audio" ng-click="playParola(parola);" ng-show="showPlayButton"></div>
-                    <div id="sillaba-{{parola.completa}}-2" class="sillaba sillaba-a" ng-show="showPlayButton">
+                    <div class="pulsante-mini-audio" ng-click="playParola(parola);" ng-if="showPlayButton"></div>
+                    <div id="sillaba-{{parola.completa}}-2" class="sillaba sillaba-a" ng-if="showPlayButton">
                         {{parola.completa.toUpperCase()}}
                     </div>
                     <audio id="audio-{{parola.completa}}-2" ng-src="{{parola.audio}}" type="audio/mpeg">
