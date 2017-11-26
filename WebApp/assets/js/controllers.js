@@ -352,6 +352,7 @@ myAppControllers.controller('ScritturaController', [
 
         function letteraKo()
         {
+            /*
             for (var u = endOfLastSillaba; u < $scope.parolaRandom.completa.length; u++) {
                 var letterDiv = $("#lettera-" + u);
                 letterDiv[0].innerHTML = "_";
@@ -359,11 +360,19 @@ myAppControllers.controller('ScritturaController', [
             }
             currentLetter = endOfLastSillaba;
             currentLetterOfSillaba = 0;
+            */
+
+            //Change error management.On second error show only one letter
+            var letterDiv = $("#lettera-" + currentLetter);
+            letterDiv[0].innerHTML = "_";
+            letterDiv[0].innerText = "_";
+
             playAudioNo();
         }
 
         function completeCurrentSillaba()
         {
+            /*
             for (var u = endOfLastSillaba; u < $scope.parolaRandom.completa.length; u++) {
                 var letterDiv = $("#lettera-" + u);
                 letterDiv[0].innerHTML = "_";
@@ -371,12 +380,19 @@ myAppControllers.controller('ScritturaController', [
             }
             currentLetter = endOfLastSillaba;
             currentLetterOfSillaba = 0;
-            
+
             var parteLength = $scope.parolaRandom.parti[currentParte].length;
             for (var u = 0; u < parteLength; u++)
             {
                 letteraOk();
             }
+            */
+
+            //Change error management.On second error show only one letter
+            var letterDiv = $("#lettera-" + currentLetter);
+            letterDiv[0].innerHTML = "_";
+            letterDiv[0].innerText = "_";
+            letteraOk();
 
             errori = 0;
 
